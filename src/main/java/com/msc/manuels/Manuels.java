@@ -9,11 +9,13 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
@@ -149,7 +151,7 @@ public class Manuels {
     }
 
     private void laumchRotateMagik(File file) throws Exception {
-        String args[] = {"magick", file.getAbsolutePath(), "-rotate", "90", file.getAbsolutePath()};
+        String args[] = {"magick", file.getAbsolutePath(), "-rotate", "-90", file.getAbsolutePath()};
         Process p = Runtime.getRuntime().exec(args);
         for (String line : IOUtils.readLines(p.getErrorStream(), "UTF-8")) {
             System.err.println(line);
@@ -184,9 +186,9 @@ public class Manuels {
 
     public void go(String args[]) throws Exception {
 
-        File folder = new File("E:\\code\\ltf-manuel\\05905 Livret Mafia");
+        File folder = new File("E:\\code\\ltf-manuel\\05906 Livret SCAR");
 
-        boolean pdf2Img = false;
+        boolean pdf2Img = true;
         boolean imgsToCrop = false;
         boolean img2pdf = true;
         boolean rename = false;
@@ -207,8 +209,15 @@ public class Manuels {
             new File(folder, "rendu").mkdirs();
             File[] files = getFiles(folder, false, ".jpg");
             for (File file : files) {
-                laumchCropMagik(file, "1404x2126-10-10", 1);
-                laumchCropMagik(file, "1404x2126+1404-5", 2);
+                BufferedImage img = ImageIO.read(file);
+                int h = img.getHeight();
+                int w = img.getWidth();
+                
+                String crop1 = w/2+"x"+h+"-0-0";
+                String crop2 = w/2+"x"+h+"+"+w/2+"-0";
+                
+                laumchCropMagik(file, crop1, 1);
+                laumchCropMagik(file, crop2, 2);
             }
         }
 
