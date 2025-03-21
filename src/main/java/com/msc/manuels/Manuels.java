@@ -25,6 +25,9 @@ import org.apache.commons.io.IOUtils;
  */
 public class Manuels {
 
+    private static final String MAGICK = "/home/mchinchole/magick"; //linux"
+    //private static final String MAGICK = "magick"; //windows
+
     public static void main(String[] args) throws Exception {
         new Manuels().go(args);
     }
@@ -37,7 +40,7 @@ public class Manuels {
 
         File result = new File(pdf.getParentFile(), fileNameNoExt + ".jpg");
 
-        String args[] = {"magick", "-density", "300", pdf.getAbsolutePath(), result.getAbsolutePath()};
+        String args[] = {MAGICK, "-density", "300", pdf.getAbsolutePath(), result.getAbsolutePath()};
         Process p = Runtime.getRuntime().exec(args);
         for (String line : IOUtils.readLines(p.getErrorStream(), "UTF-8")) {
             System.err.println(line);
@@ -122,23 +125,14 @@ public class Manuels {
         doc.close();
     }
 
-    Pattern p = Pattern.compile("([a-zA-Z0-9 ]*)[-]*([0-9]+).+");
-
     private void laumchCropMagik(File file, String crop, int i) throws Exception {
 
-        Matcher m = p.matcher(file.getName());
-        if (!m.find()) {
-            return;
-        }
-        String fileNameNoExt = m.group(1);
-        String chiffreStr = m.group(2);
-        int chiffre = Integer.parseInt(chiffreStr);
-        boolean add = chiffre < 10;
-        String newFileName = fileNameNoExt + "-" + (add ? "0" + chiffreStr : chiffreStr);
+        int pos = file.getName().lastIndexOf('.');
+        String fileNoExt = file.getName().substring(0, pos);
 
-        String filename = file.getParentFile().getAbsolutePath() + "/rendu/" + newFileName + "-" + i + ".jpg";
+        String filename = file.getParentFile().getAbsolutePath() + "/rendu/" + fileNoExt + "-" + i + ".jpg";
 
-        String args[] = {"magick", file.getAbsolutePath(), "-crop", crop, filename};
+        String args[] = {MAGICK, file.getAbsolutePath(), "-crop", crop, filename};
         Process p = Runtime.getRuntime().exec(args);
 
         for (String line : IOUtils.readLines(p.getErrorStream(), "UTF-8")) {
@@ -151,7 +145,7 @@ public class Manuels {
     }
 
     private void laumchRotateMagik(File file) throws Exception {
-        String args[] = {"magick", file.getAbsolutePath(), "-rotate", "-90", file.getAbsolutePath()};
+        String args[] = {MAGICK, file.getAbsolutePath(), "-rotate", "-90", file.getAbsolutePath()};
         Process p = Runtime.getRuntime().exec(args);
         for (String line : IOUtils.readLines(p.getErrorStream(), "UTF-8")) {
             System.err.println(line);
@@ -163,12 +157,29 @@ public class Manuels {
         int pos = file.getName().lastIndexOf('.');
         String fileNoExt = file.getName().substring(0, pos);
 
-        String args[] = {"magick", file.getAbsolutePath(), new File(file.getParent(), fileNoExt + ext).getAbsolutePath()};
+        File newFIle = new File(file.getParent(), "rendu/" + fileNoExt + ext);
+        String args[] = {MAGICK, file.getAbsolutePath(), newFIle.getAbsolutePath()};
         Process p = Runtime.getRuntime().exec(args);
         for (String line : IOUtils.readLines(p.getErrorStream(), "UTF-8")) {
             System.err.println(line);
         }
         p.waitFor();
+    }
+
+    private void launchResize(File file, String taille) throws Exception {
+        int pos = file.getName().lastIndexOf('.');
+        String fileNoExt = file.getName().substring(0, pos);
+        
+        File newFIle = new File(file.getParent(), "rendu/" + fileNoExt + ".jpg");
+        String args[] = {MAGICK, file.getAbsolutePath(), "-resize", taille, newFIle.getAbsolutePath()};
+        Process p = Runtime.getRuntime().exec(args);
+        for (String line : IOUtils.readLines(p.getErrorStream(), "UTF-8")) {
+            System.err.println(line);
+        }
+        p.waitFor();
+        File fileToOriginals = new File(file.getParent(), "originals/" + file.getName());
+        FileUtils.moveFile(file, fileToOriginals);
+        FileUtils.moveFile(newFIle, new File(file.getParent(), newFIle.getName()));
     }
 
     private File[] getFiles(File folder, boolean inRendu, String ext) {
@@ -186,14 +197,15 @@ public class Manuels {
 
     public void go(String args[]) throws Exception {
 
-        File folder = new File("E:\\code\\ltf-manuel\\05906 Livret SCAR");
+        File folder = new File("/home/mchinchole/manuels/Lot de Manuels educatif par _El_Madkiller57_/ADI 2.0 Manuels/ADI 2.0 Manuel utilisation");
 
-        boolean pdf2Img = true;
+        boolean pdf2Img = false;
         boolean imgsToCrop = false;
         boolean img2pdf = true;
         boolean rename = false;
         boolean rotate = false;
         boolean convert = false;
+        boolean resize = false;
 
         if (pdf2Img) {
             File originalFolder = new File(folder, "originals");
@@ -212,10 +224,10 @@ public class Manuels {
                 BufferedImage img = ImageIO.read(file);
                 int h = img.getHeight();
                 int w = img.getWidth();
-                
-                String crop1 = w/2+"x"+h+"-0-0";
-                String crop2 = w/2+"x"+h+"+"+w/2+"-0";
-                
+
+                String crop1 = w / 2 + "x" + h + "-0-0";
+                String crop2 = w / 2 + "x" + h + "+" + w / 2 + "-0";
+
                 laumchCropMagik(file, crop1, 1);
                 laumchCropMagik(file, crop2, 2);
             }
@@ -223,17 +235,18 @@ public class Manuels {
 
         if (img2pdf) {
             File[] files = getFiles(folder, true, ".jpg");
-            launchImg2PdfA5(files);
-            //launchImg2Pdf(files);
+            //launchImg2PdfA5(files);
+            launchImg2Pdf(files);
             //launchImg2PdfBdBelge(files);
         }
 
         if (rename) {
-            File files[] = getFiles(folder, false, ".jpeg");
+            File files[] = getFiles(folder, false, ".jpg");
+            int i = 0;
             for (File file : files) {
-                int pos = file.getName().lastIndexOf('.');
-                String fileNoExt = file.getName().substring(0, pos);
-                file.renameTo(new File(folder, fileNoExt + ".jpg"));
+                String nb = i > 0 ? "" + i : "0" + i;
+                file.renameTo(new File(folder, nb + ".jpg"));
+                i++;
             }
         }
 
@@ -245,9 +258,20 @@ public class Manuels {
         }
 
         if (convert) {
+            new File(folder, "rendu").mkdirs();
             File files[] = getFiles(folder, false, ".png");
             for (File file : files) {
                 launchConvertInm(file, ".jpg");
+            }
+        }
+
+        if (resize) {
+            new File(folder, "originals").mkdirs();
+            new File(folder, "rendu").mkdirs();
+            File files[] = getFiles(folder, false, ".jpg");
+            for (File file : files) {
+                launchResize(file, "50%");
+                //launchResize(file, "1000x2450", true);
             }
         }
 
