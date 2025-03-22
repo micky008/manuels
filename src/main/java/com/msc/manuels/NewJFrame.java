@@ -127,7 +127,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelCropInfos = new javax.swing.JLabel();
         jPanelimg2Pdf = new javax.swing.JPanel();
         jButtonConvertImg2Pdf = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
         jComboBoxImg2PdfPageSize = new javax.swing.JComboBox<>();
         jLabelImg2PdfBDBelge = new javax.swing.JLabel();
         jRadioButtonStendard = new javax.swing.JRadioButton();
@@ -138,6 +137,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelImg2Stendard = new javax.swing.JLabel();
         jFormattedTextFieldImg2PdfHeight = new javax.swing.JFormattedTextField();
         jFormattedTextFieldImg2PdfWidth = new javax.swing.JFormattedTextField();
+        jLabelImg2PDFNbImg1 = new javax.swing.JLabel();
         jPanelRotate = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -356,8 +356,6 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Nombres d'images:");
-
         jLabelImg2PdfBDBelge.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2PdfBDBelge.setText("Info sur le template");
         jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -402,6 +400,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jFormattedTextFieldImg2PdfWidth.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jFormattedTextFieldImg2PdfWidth.setText("936");
 
+        jLabelImg2PDFNbImg1.setText("Nombres d'images:");
+
         javax.swing.GroupLayout jPanelimg2PdfLayout = new javax.swing.GroupLayout(jPanelimg2Pdf);
         jPanelimg2Pdf.setLayout(jPanelimg2PdfLayout);
         jPanelimg2PdfLayout.setHorizontalGroup(
@@ -411,13 +411,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
-                                .addComponent(jButtonConvertImg2Pdf)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(84, 84, 84))))
+                        .addComponent(jButtonConvertImg2Pdf)
+                        .addContainerGap())
                     .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,6 +440,10 @@ public class NewJFrame extends javax.swing.JFrame {
                                     .addComponent(jLabelImg2PdfBDBelge, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabelImg2Stendard, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(157, 157, 157))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelImg2PDFNbImg1)
+                .addGap(84, 84, 84))
         );
         jPanelimg2PdfLayout.setVerticalGroup(
             jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,9 +464,9 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabelImg2PdfBDBelge)
                     .addComponent(jFormattedTextFieldImg2PdfWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedTextFieldImg2PdfHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jLabelImg2PDFNbImg1)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonConvertImg2Pdf)
                 .addContainerGap())
         );
@@ -871,6 +870,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 pg = new PageSize(Float.parseFloat(jFormattedTextFieldImg2PdfWidth.getText()), Float.parseFloat(jFormattedTextFieldImg2PdfHeight.getText()));
             }
             magick.launchImg2Pdf(files, pg);
+            jLabelImg2PDFNbImg1.setText("Nombres d'images: "+files.length);
         } catch (Exception ex) {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -969,11 +969,11 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelCropInfos;
     private javax.swing.JLabel jLabelCropNbImg;
     private javax.swing.JLabel jLabelCropinfoGeometryURL;
     private javax.swing.JLabel jLabelFolder;
+    private javax.swing.JLabel jLabelImg2PDFNbImg1;
     private javax.swing.JLabel jLabelImg2PdfBDBelge;
     private javax.swing.JLabel jLabelImg2PdfOriginal;
     private javax.swing.JLabel jLabelImg2Stendard;
