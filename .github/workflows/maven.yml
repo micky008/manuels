@@ -28,7 +28,7 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Build BE with Maven
-      run: mvn --settings settings.xml -B package --file pom.xml 
+      run: mvn --settings settings.xml -B package -P prod --file pom.xml 
       env:
         GITHUB_TOKEN: ${{ secrets.DEPLOYTOKEN }}
     - name: Publish to GitHub Packages Apache Maven
