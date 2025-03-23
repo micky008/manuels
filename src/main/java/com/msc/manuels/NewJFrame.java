@@ -6,7 +6,6 @@ package com.msc.manuels;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.internal.GsonBuildConfig;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import java.awt.Desktop;
@@ -24,18 +23,18 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import com.itextpdf.layout.element.Image;
-import java.net.MalformedURLException;
+import java.awt.event.KeyEvent;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author Michael
  */
 public class NewJFrame extends javax.swing.JFrame {
-
+    
     private static final File CONFIG_FILE = new File("./config.json");
-
+    
     private Config config;
     private File folder;
     private Magick magick;
@@ -50,7 +49,7 @@ public class NewJFrame extends javax.swing.JFrame {
         peupleComposant();
         magick = new Magick(config);
     }
-
+    
     private void initConfig() {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -73,7 +72,7 @@ public class NewJFrame extends javax.swing.JFrame {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void peupleComposant() {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel();
         String pageSizes[] = {"A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "DEFAULT", "EXECUTIVE", "LEDGER", "LEGAL", "LETTER", "TABLOID"};
@@ -81,7 +80,7 @@ public class NewJFrame extends javax.swing.JFrame {
         model.setSelectedItem("A5");
         this.jComboBoxImg2PdfPageSize.setModel(model);
     }
-
+    
     private void saveConfig() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String res = gson.toJson(config);
@@ -91,12 +90,7 @@ public class NewJFrame extends javax.swing.JFrame {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private String getFileWithnoExt(File file) {
-        int pos = file.getName().lastIndexOf('.');
-        return file.getName().substring(0, pos);
-    }
-
+    
     private void moveFileToFolder(File original, String folderDest) {
         new File(folder, folderDest).mkdirs();
         File originalPdf = new File(folder, folderDest + "/" + original.getName());
@@ -127,12 +121,12 @@ public class NewJFrame extends javax.swing.JFrame {
         jFormattedTextFieldPdf2Img = new javax.swing.JFormattedTextField();
         jPanelCrop = new javax.swing.JPanel();
         jButtonConvertCrop = new javax.swing.JButton();
-        jTextFieldDensite1 = new javax.swing.JTextField();
+        jTextFieldCrop1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabelCropNbImg = new javax.swing.JLabel();
         jLabelNbImageCrop = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldDensite2 = new javax.swing.JTextField();
+        jTextFieldCrop2 = new javax.swing.JTextField();
         jLabelCropinfoGeometryURL = new javax.swing.JLabel();
         jLabelCropInfos = new javax.swing.JLabel();
         jPanelimg2Pdf = new javax.swing.JPanel();
@@ -168,13 +162,16 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1ConvertNbImage = new javax.swing.JLabel();
         jPanelRename = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        jListRenameList = new javax.swing.JList<>();
         jButtonConvertirRename = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jButtonRenameUp = new javax.swing.JButton();
+        jButtonRenameDown = new javax.swing.JButton();
+        jButtonRenameSuppr = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jButtonRenameReset = new javax.swing.JButton();
+        jLabelRenameNbImage1 = new javax.swing.JLabel();
+        jButtonRenamePgUp = new javax.swing.JButton();
+        jButtonRenamePgDown = new javax.swing.JButton();
         jLabelFolder = new javax.swing.JLabel();
         jButtonOpenFolder = new javax.swing.JButton();
 
@@ -245,7 +242,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel6)
                     .addComponent(jFormattedTextFieldPdf2Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(jLabelPdf2imgNbImg)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelPdf2ImagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -263,12 +260,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldDensite1.setText("Auto");
-        jTextFieldDensite1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDensite1ActionPerformed(evt);
-            }
-        });
+        jTextFieldCrop1.setText("Auto");
 
         jLabel5.setText("Crop page 1");
 
@@ -276,7 +268,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel8.setText("Crop page 2");
 
-        jTextFieldDensite2.setText("Auto");
+        jTextFieldCrop2.setText("Auto");
 
         jLabelCropinfoGeometryURL.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropinfoGeometryURL.setText("Infos");
@@ -311,11 +303,11 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addGroup(jPanelCropLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(57, 57, 57)
-                                .addComponent(jTextFieldDensite1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFieldCrop1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelCropLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(57, 57, 57)
-                                .addComponent(jTextFieldDensite2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(26, 26, 26)
                         .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelCropinfoGeometryURL, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,21 +330,21 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextFieldDensite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCrop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCropinfoGeometryURL))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextFieldDensite2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCropInfos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(jLabelCropNbImg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonConvertCrop)
                 .addContainerGap())
             .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelCropLayout.createSequentialGroup()
-                    .addContainerGap(177, Short.MAX_VALUE)
+                    .addContainerGap(192, Short.MAX_VALUE)
                     .addComponent(jLabelNbImageCrop, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(67, 67, 67)))
         );
@@ -459,10 +451,11 @@ public class NewJFrame extends javax.swing.JFrame {
             jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxImg2PdfPageSize, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButtonStendard)
-                    .addComponent(jLabelImg2Stendard))
+                    .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBoxImg2PdfPageSize, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelImg2Stendard)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButtonOriginal)
@@ -474,7 +467,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabelImg2PdfBDBelge)
                     .addComponent(jFormattedTextFieldImg2PdfWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedTextFieldImg2PdfHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(jLabelImg2PDFNbImg1)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonConvertImg2Pdf)
@@ -537,7 +530,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelRotateURL1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(jLabel1RotateNbImg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonConvertirRotate)
@@ -601,7 +594,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(jLabelConvertNbImg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonConvertireConvert)
@@ -613,11 +606,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel16.setText("Nouvelle taille:");
 
         jTextFieldResizeText.setText("50%");
-        jTextFieldResizeText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldResizeTextActionPerformed(evt);
-            }
-        });
 
         jLabelResizenfoURL1.setForeground(new java.awt.Color(0, 153, 255));
         jLabelResizenfoURL1.setText("Infos");
@@ -669,7 +657,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelResizenfoURL1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addComponent(jLabel1ConvertNbImage)
                 .addGap(11, 11, 11)
                 .addComponent(jButtonConvertirResize)
@@ -678,27 +666,75 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Resize", jPanelResize);
 
-        jScrollPane2.setViewportView(jList2);
+        jListRenameList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jListRenameListKeyPressed(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jListRenameList);
 
-        jButton1.setText("No place");
-        jButton1.setToolTipText("Permet de placer une ligne directement a la bonne place.");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConvertirRename.setText("Convertir");
+        jButtonConvertirRename.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonConvertirRenameActionPerformed(evt);
             }
         });
 
-        jButtonConvertirRename.setText("Convertir");
+        jButtonRenameUp.setText("Up");
+        jButtonRenameUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRenameUpActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Up");
+        jButtonRenameDown.setText("Down");
+        jButtonRenameDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRenameDownActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Down");
-
-        jButton8.setText("Suppr");
+        jButtonRenameSuppr.setText("Suppr");
+        jButtonRenameSuppr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRenameSupprActionPerformed(evt);
+            }
+        });
 
         jLabel10.setForeground(new java.awt.Color(0, 153, 255));
         jLabel10.setText("Infos");
-        jLabel10.setToolTipText("<html>\nOn peux appyer sur les fleches haut/bas pour monter/decendre un fichier<br>\n<br>\nOn peux appyer sur suppr pour supprimer une ligne\n</html>");
+        jLabel10.setToolTipText("On peux appyer sur les fleches haut/bas pour monter/decendre un fichier\\n\nOn peux appuyer sur Page up/pagedown pour aller de 10 en 10\\n\nOn peux appyer sur suppr pour supprimer une ligne\n");
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+
+        jButtonRenameReset.setText("Reset");
+        jButtonRenameReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRenameResetActionPerformed(evt);
+            }
+        });
+
+        jLabelRenameNbImage1.setText("Nombres d'images:");
+
+        jButtonRenamePgUp.setText("Pg Up");
+        jButtonRenamePgUp.setToolTipText("Remonte de 10");
+        jButtonRenamePgUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRenamePgUpActionPerformed(evt);
+            }
+        });
+
+        jButtonRenamePgDown.setText("Pg Down");
+        jButtonRenamePgDown.setToolTipText("Descends de 10");
+        jButtonRenamePgDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRenamePgDownActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelRenameLayout = new javax.swing.GroupLayout(jPanelRename);
         jPanelRename.setLayout(jPanelRenameLayout);
@@ -708,18 +744,29 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1)
-                    .addComponent(jButton5)
-                    .addComponent(jButton8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonConvertirRename, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRenameLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(83, 83, 83)))
-                .addContainerGap())
+                    .addGroup(jPanelRenameLayout.createSequentialGroup()
+                        .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRenameLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonRenameReset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonConvertirRename, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(jPanelRenameLayout.createSequentialGroup()
+                                .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButtonRenameSuppr, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                    .addComponent(jButtonRenameUp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonRenamePgUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonRenameDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanelRenameLayout.createSequentialGroup()
+                        .addComponent(jButtonRenamePgDown)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addComponent(jLabelRenameNbImage1)
+                        .addGap(82, 82, 82))))
         );
         jPanelRenameLayout.setVerticalGroup(
             jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -728,15 +775,21 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)
                     .addGroup(jPanelRenameLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton8)
+                        .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonRenameSuppr)
                             .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addComponent(jButton4)
+                        .addGap(7, 7, 7)
+                        .addComponent(jButtonRenameReset)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(jButtonRenameUp)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonRenameDown)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonRenamePgUp)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelRenameNbImage1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonRenamePgDown, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonConvertirRename)))
                 .addContainerGap())
@@ -782,24 +835,10 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldDensite1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDensite1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDensite1ActionPerformed
-
     private void jLabelCropinfoGeometryURLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropinfoGeometryURLMouseClicked
-
         String url = "https://imagemagick.org/script/command-line-processing.php#geometry";
         openURL(url);
-
     }//GEN-LAST:event_jLabelCropinfoGeometryURLMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextFieldResizeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldResizeTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldResizeTextActionPerformed
 
     private void jLabelResizenfoURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelResizenfoURL1MouseClicked
         String url = "https://imagemagick.org/script/command-line-processing.php#geometry";
@@ -811,20 +850,20 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelImg2PdfBDBelgeMouseClicked
 
     private void jButtonConvertPdf2ImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertPdf2ImgActionPerformed
-        File pdfs[] = getFiles(folder, false, ".pdf");
+        File pdfs[] = getFiles(folder, ".pdf");
         if (pdfs.length == 0) {
             JOptionPane.showMessageDialog(this, "Pas de pdf trouver dans le repertoire choisi", "Erreur", JOptionPane.ERROR_MESSAGE);
             return;
         }
         File pdf = pdfs[0];
-
+        
         try {
             magick.launchPdf2Img(pdf, jFormattedTextFieldPdf2Img.getText());
         } catch (Exception ex) {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         moveFileToFolder(pdf, "originals");
-        File jpgs[] = getFiles(folder, false, ".jpg");
+        File jpgs[] = getFiles(folder, ".jpg");
         jLabelPdf2imgNbImg.setText("Nombres d'images: " + jpgs.length);
     }//GEN-LAST:event_jButtonConvertPdf2ImgActionPerformed
 
@@ -854,22 +893,22 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButtonConvertCropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertCropActionPerformed
         new File(folder, "crop").mkdirs();
-        File[] files = getFiles(folder, false, ".jpg");
+        File[] files = getFiles(folder, ".jpg");
         int i = 0;
         for (File file : files) {
-
+            
             try {
                 BufferedImage img = ImageIO.read(file);
-
+                
                 int h = img.getHeight();
                 int w = img.getWidth();
-
+                
                 String crop1 = w / 2 + "x" + h + "-0-0";
                 String crop2 = w / 2 + "x" + h + "+" + w / 2 + "-0";
-
+                
                 magick.laumchCropMagik(file, crop1, 1);
                 magick.laumchCropMagik(file, crop2, 2);
-
+                
                 i += 2;
                 jLabelCropNbImg.setText("Nombres d'images: " + i + "/" + (files.length * 2));
             } catch (Exception ex) {
@@ -883,7 +922,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelImg2PdfOriginalMouseClicked
 
     private void jButtonConvertImg2PdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertImg2PdfActionPerformed
-        File files[] = getFiles(folder, false, ".jpg");
+        File files[] = getFiles(folder, ".jpg");
         PageSize pg = null;
         try {
             if (jRadioButtonOriginal.isSelected()) {
@@ -909,7 +948,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButtonConvertirRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirRotateActionPerformed
         new File(folder, "rotate").mkdirs();
-        File files[] = getFiles(folder, false, ".jpg");
+        File files[] = getFiles(folder, ".jpg");
         int i = 0;
         for (File file : files) {
             i++;
@@ -934,7 +973,7 @@ public class NewJFrame extends javax.swing.JFrame {
         if (!jTextFieldConvertExt.getText().startsWith(".")) {
             jTextFieldConvertExt.setText("." + jTextFieldConvertExt.getText().trim());
         }
-        File files[] = getFiles(folder, false, jTextFieldConvertExt.getText());
+        File files[] = getFiles(folder, jTextFieldConvertExt.getText());
         new File(folder, "convert").mkdirs();
         int i = 0;
         for (File file : files) {
@@ -949,7 +988,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConvertireConvertActionPerformed
 
     private void jButtonConvertirResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirResizeActionPerformed
-        File files[] = getFiles(folder, false, ".jpg");
+        File files[] = getFiles(folder, ".jpg");
         new File(folder, "resize").mkdirs();
         int i = 0;
         for (File file : files) {
@@ -963,6 +1002,137 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1ConvertNbImage.setText("Nombres d'images: " + i + "/" + files.length);
     }//GEN-LAST:event_jButtonConvertirResizeActionPerformed
 
+    private void jButtonRenameResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameResetActionPerformed
+        File files[] = getFiles(folder, null);
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (File file : files) {
+            model.addElement(file.getName());
+        }
+        jListRenameList.setModel(model);
+        resetList = true;
+    }//GEN-LAST:event_jButtonRenameResetActionPerformed
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        JOptionPane.showMessageDialog(this, "Permet de renommer les fichier en 00.jpg 01.jpg etc... dans l'ordre de la liste.\nC'est pour ca qu'on peux bouger les lignes de la liste\n\nOn peux appyer sur les fleches haut/bas pour monter/decendre une ligne\nOn peux appuyer sur Page up/Page down pour aller de 10 en 10\nOn peux appyer sur suppr pour supprimer une ligne");
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jButtonRenameSupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameSupprActionPerformed
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_DELETE, 's');
+        jListRenameListKeyPressed(ke);
+    }//GEN-LAST:event_jButtonRenameSupprActionPerformed
+
+    private void jButtonRenameDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameDownActionPerformed
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_DOWN, 'd');
+        jListRenameListKeyPressed(ke);
+    }//GEN-LAST:event_jButtonRenameDownActionPerformed
+
+    private void jButtonRenameUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameUpActionPerformed
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_UP, 'u');
+        jListRenameListKeyPressed(ke);
+    }//GEN-LAST:event_jButtonRenameUpActionPerformed
+
+    private void jListRenameListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListRenameListKeyPressed
+        if (!resetList || jListRenameList.getModel().getSize() <= 0) {
+            return;
+        }
+        DefaultListModel<String> model = (DefaultListModel<String>) jListRenameList.getModel();
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            if (jListRenameList.getSelectedIndex() == 0) {
+                return;
+            }
+            String tmp = model.getElementAt(jListRenameList.getSelectedIndex() - 1);
+            model.setElementAt(jListRenameList.getSelectedValue(), jListRenameList.getSelectedIndex() - 1);
+            model.setElementAt(tmp, jListRenameList.getSelectedIndex());
+            jListRenameList.setSelectedIndex(jListRenameList.getSelectedIndex() - 1);
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            if (jListRenameList.getSelectedIndex() == (model.getSize() - 1)) {
+                return;
+            }
+            String tmp = model.getElementAt(jListRenameList.getSelectedIndex() + 1);
+            model.setElementAt(jListRenameList.getSelectedValue(), jListRenameList.getSelectedIndex() + 1);
+            model.setElementAt(tmp, jListRenameList.getSelectedIndex());
+            jListRenameList.setSelectedIndex(jListRenameList.getSelectedIndex() + 1);
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
+            int minPlace = 0;
+            if (jListRenameList.getSelectedIndex() - 10 >= 0) {
+                minPlace = jListRenameList.getSelectedIndex() - 10;
+            }
+            model.add(minPlace, jListRenameList.getSelectedValue());
+            model.remove(jListRenameList.getSelectedIndex());
+            jListRenameList.setSelectedIndex(minPlace);
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
+            int maxPlace = model.getSize() - 1;
+            if (jListRenameList.getSelectedIndex() + 10 <= maxPlace) {
+                maxPlace = jListRenameList.getSelectedIndex() + 10;
+            }
+            model.add(maxPlace, jListRenameList.getSelectedValue());
+            model.remove(jListRenameList.getSelectedIndex());
+            jListRenameList.setSelectedIndex(maxPlace);
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            if ((model.getSize() - 1) <= 0) {
+                return;
+            }
+            int res = jListRenameList.getSelectedIndex() - 1;
+            if (res < 0) {
+                res = 0;
+            }
+            model.remove(jListRenameList.getSelectedIndex());
+            jListRenameList.setSelectedIndex(res);
+        }
+    }//GEN-LAST:event_jListRenameListKeyPressed
+
+    private void jButtonRenamePgUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgUpActionPerformed
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_PAGE_UP, 'u');
+        jListRenameListKeyPressed(ke);
+    }//GEN-LAST:event_jButtonRenamePgUpActionPerformed
+
+    private void jButtonRenamePgDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgDownActionPerformed
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_PAGE_DOWN, 'd');
+        jListRenameListKeyPressed(ke);
+    }//GEN-LAST:event_jButtonRenamePgDownActionPerformed
+
+    private void jButtonConvertirRenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirRenameActionPerformed
+        DefaultListModel<String> model = (DefaultListModel<String>) jListRenameList.getModel();
+        if (model == null || model.size() <= 0) {
+            return;
+        }
+        int len = model.size();
+        int j = -1;
+        while (len > 0) {
+            len /= 10;
+            j++;
+        }
+        for (int i = 0; i < model.size(); i++) {
+            if (i == 10) {
+                j--;
+            }
+            if (i == 100) {
+                j--;
+            }
+            if (i == 1000) {
+                j--;
+            }
+            String nb0 = "";
+            for (int x = j; x > 0; x--) {
+                nb0 += "0";
+            }
+            String name = model.get(i);
+            int pos = name.lastIndexOf('.');
+            String extention = name.substring(pos);
+            String imgName = nb0 + i + extention;
+            File originFile = new File(folder, name);
+            File newFile = new File(folder, imgName);
+            originFile.renameTo(newFile);            
+        }
+        jLabelRenameNbImage1.setText("Nombres d'images: " + model.getSize() + "/" + model.getSize());
+    }//GEN-LAST:event_jButtonConvertirRenameActionPerformed
+    
+    private boolean resetList = false;
+    
     private void openURL(String url) {
         Desktop desktop = java.awt.Desktop.getDesktop();
         try {
@@ -971,15 +1141,13 @@ public class NewJFrame extends javax.swing.JFrame {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private File[] getFiles(File folder, boolean inRendu, String ext) {
+    
+    private File[] getFiles(File folder, String ext) {
         File files[] = null;
-        if (inRendu) {
-            File newFolder = new File(folder, "rendu");
-            newFolder.mkdirs(); // au cas ou
-            files = newFolder.listFiles((File pathname) -> pathname.getName().endsWith(ext));
-        } else {
+        if (ext != null) {
             files = folder.listFiles((File pathname) -> pathname.getName().endsWith(ext));
+        } else {
+            files = folder.listFiles((File pathname) -> pathname.isFile());
         }
         Arrays.sort(files, Comparator.comparing(File::getName));
         return files;
@@ -1022,10 +1190,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupImg2Pdf;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonConvertCrop;
     private javax.swing.JButton jButtonConvertImg2Pdf;
     private javax.swing.JButton jButtonConvertPdf2Img;
@@ -1034,6 +1198,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConvertirRotate;
     private javax.swing.JButton jButtonConvertireConvert;
     private javax.swing.JButton jButtonOpenFolder;
+    private javax.swing.JButton jButtonRenameDown;
+    private javax.swing.JButton jButtonRenamePgDown;
+    private javax.swing.JButton jButtonRenamePgUp;
+    private javax.swing.JButton jButtonRenameReset;
+    private javax.swing.JButton jButtonRenameSuppr;
+    private javax.swing.JButton jButtonRenameUp;
     private javax.swing.JComboBox<String> jComboBoxImg2PdfPageSize;
     private javax.swing.JFormattedTextField jFormattedTextFieldImg2PdfHeight;
     private javax.swing.JFormattedTextField jFormattedTextFieldImg2PdfWidth;
@@ -1062,9 +1232,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelImg2Stendard;
     private javax.swing.JLabel jLabelNbImageCrop;
     private javax.swing.JLabel jLabelPdf2imgNbImg;
+    private javax.swing.JLabel jLabelRenameNbImage1;
     private javax.swing.JLabel jLabelResizenfoURL1;
     private javax.swing.JLabel jLabelRotateURL1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JList<String> jListRenameList;
     private javax.swing.JPanel jPanelConvert;
     private javax.swing.JPanel jPanelCrop;
     private javax.swing.JPanel jPanelPdf2Imag;
@@ -1078,8 +1249,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextFieldConvertExt;
-    private javax.swing.JTextField jTextFieldDensite1;
-    private javax.swing.JTextField jTextFieldDensite2;
+    private javax.swing.JTextField jTextFieldCrop1;
+    private javax.swing.JTextField jTextFieldCrop2;
     private javax.swing.JTextField jTextFieldResizeText;
     private javax.swing.JTextField jTextFieldRotate;
     // End of variables declaration//GEN-END:variables

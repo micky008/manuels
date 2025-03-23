@@ -36,9 +36,9 @@ public class Magick {
         //Attention tres lent
         int pos = pdf.getName().lastIndexOf('.');
         String fileNameNoExt = pdf.getName().substring(0, pos);
-        File result = new File(pdf.getParentFile(), fileNameNoExt + "-00%d.jpg");
+        File result = new File(pdf.getParentFile(), fileNameNoExt + "-%d.jpg");
         String args[] = {CONFIG.magickCommande, "-density", density, pdf.getAbsolutePath(), result.getAbsolutePath()};
-        launchMagick(args);
+        launchMagick(args);        
     }
 
     //    A ne pas delete
