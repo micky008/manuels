@@ -92,9 +92,19 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }
 
-    public String getFileWithnoExt(File file) {
+    private String getFileWithnoExt(File file) {
         int pos = file.getName().lastIndexOf('.');
         return file.getName().substring(0, pos);
+    }
+
+    private void moveFileToFolder(File original, String folderDest) {
+        new File(folder, folderDest).mkdirs();
+        File originalPdf = new File(folder, folderDest + "/" + original.getName());
+        try {
+            FileUtils.moveFile(original, originalPdf);
+        } catch (IOException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -140,22 +150,22 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelImg2PDFNbImg1 = new javax.swing.JLabel();
         jPanelRotate = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldRotate = new javax.swing.JTextField();
         jLabelRotateURL1 = new javax.swing.JLabel();
         jButtonConvertirRotate = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel1RotateNbImg = new javax.swing.JLabel();
         jPanelConvert = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldConvertExt = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jButtonConvertireConvert = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
+        jLabelConvertNbImg = new javax.swing.JLabel();
         jPanelResize = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldResizeText = new javax.swing.JTextField();
         jLabelResizenfoURL1 = new javax.swing.JLabel();
         jButtonConvertirResize = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel1ConvertNbImage = new javax.swing.JLabel();
         jPanelRename = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
@@ -189,7 +199,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelPdf2imgNbImg.setText("Nombres d'images:");
 
         jLabel6.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel6.setText("Attention*");
+        jLabel6.setText("Infos");
         jLabel6.setToolTipText("");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -269,7 +279,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextFieldDensite2.setText("Auto");
 
         jLabelCropinfoGeometryURL.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelCropinfoGeometryURL.setText("Info sur le template");
+        jLabelCropinfoGeometryURL.setText("Infos");
         jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCropinfoGeometryURL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -277,7 +287,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabelCropInfos.setForeground(new java.awt.Color(51, 153, 255));
+        jLabelCropInfos.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropInfos.setText("Infos");
         jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCropInfos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -357,7 +367,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jLabelImg2PdfBDBelge.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelImg2PdfBDBelge.setText("Info sur le template");
+        jLabelImg2PdfBDBelge.setText("Infos");
         jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2PdfBDBelge.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -377,7 +387,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel18.setText("En pixel");
 
         jLabelImg2PdfOriginal.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelImg2PdfOriginal.setText("Info sur le template");
+        jLabelImg2PdfOriginal.setText("Infos");
         jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2PdfOriginal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -386,7 +396,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jLabelImg2Stendard.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelImg2Stendard.setText("Info sur le template");
+        jLabelImg2Stendard.setText("Infos");
         jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2Stendard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -475,16 +485,26 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel11.setText("Rotation");
 
-        jTextField1.setText("90");
+        jTextFieldRotate.setText("90");
 
         jLabelRotateURL1.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelRotateURL1.setText("Info sur le template");
-        jLabelRotateURL1.setToolTipText("<html>\nMettre (en degrés) la rotation.<br>\nPeux etre négatif<br>\n<br>\nExemple: 90 ou -90\n</html>");
+        jLabelRotateURL1.setText("Infos");
+        jLabelRotateURL1.setToolTipText("");
         jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelRotateURL1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelRotateURL1MouseClicked(evt);
+            }
+        });
 
         jButtonConvertirRotate.setText("Convertir");
+        jButtonConvertirRotate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertirRotateActionPerformed(evt);
+            }
+        });
 
-        jLabel12.setText("Nombres d'images:");
+        jLabel1RotateNbImg.setText("Nombres d'images:");
 
         javax.swing.GroupLayout jPanelRotateLayout = new javax.swing.GroupLayout(jPanelRotate);
         jPanelRotate.setLayout(jPanelRotateLayout);
@@ -496,7 +516,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(jPanelRotateLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 219, Short.MAX_VALUE))
@@ -506,7 +526,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
+                .addComponent(jLabel1RotateNbImg)
                 .addGap(84, 84, 84))
         );
         jPanelRotateLayout.setVerticalGroup(
@@ -515,10 +535,10 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelRotateURL1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                .addComponent(jLabel12)
+                .addComponent(jLabel1RotateNbImg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonConvertirRotate)
                 .addContainerGap())
@@ -528,16 +548,26 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel13.setText("Quel extention convertir ?");
 
-        jTextField2.setText(".png");
+        jTextFieldConvertExt.setText(".png");
 
         jLabel14.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel14.setText("Astuces");
-        jLabel14.setToolTipText("La sortie serra toujours en .jpg");
+        jLabel14.setText("Infos");
+        jLabel14.setToolTipText("");
         jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
 
         jButtonConvertireConvert.setText("Convertir");
+        jButtonConvertireConvert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertireConvertActionPerformed(evt);
+            }
+        });
 
-        jLabel15.setText("Nombres d'images:");
+        jLabelConvertNbImg.setText("Nombres d'images:");
 
         javax.swing.GroupLayout jPanelConvertLayout = new javax.swing.GroupLayout(jPanelConvert);
         jPanelConvert.setLayout(jPanelConvertLayout);
@@ -549,10 +579,10 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(jPanelConvertLayout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(jLabel14)
-                        .addContainerGap(231, Short.MAX_VALUE))
+                        .addContainerGap(246, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,7 +590,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jButtonConvertireConvert)
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
-                                .addComponent(jLabel15)
+                                .addComponent(jLabelConvertNbImg)
                                 .addGap(84, 84, 84))))))
         );
         jPanelConvertLayout.setVerticalGroup(
@@ -569,10 +599,10 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addComponent(jLabel15)
+                .addComponent(jLabelConvertNbImg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonConvertireConvert)
                 .addContainerGap())
@@ -582,15 +612,15 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel16.setText("Nouvelle taille:");
 
-        jTextField3.setText("50%");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldResizeText.setText("50%");
+        jTextFieldResizeText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextFieldResizeTextActionPerformed(evt);
             }
         });
 
         jLabelResizenfoURL1.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelResizenfoURL1.setText("Info sur le template");
+        jLabelResizenfoURL1.setText("Infos");
         jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelResizenfoURL1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -599,8 +629,13 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jButtonConvertirResize.setText("Convertir");
+        jButtonConvertirResize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertirResizeActionPerformed(evt);
+            }
+        });
 
-        jLabel17.setText("Nombres d'images:");
+        jLabel1ConvertNbImage.setText("Nombres d'images:");
 
         javax.swing.GroupLayout jPanelResizeLayout = new javax.swing.GroupLayout(jPanelResize);
         jPanelResize.setLayout(jPanelResizeLayout);
@@ -612,7 +647,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(jPanelResizeLayout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jLabelResizenfoURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(156, Short.MAX_VALUE))
@@ -623,7 +658,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jButtonConvertirResize)
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
-                                .addComponent(jLabel17)
+                                .addComponent(jLabel1ConvertNbImage)
                                 .addGap(85, 85, 85))))))
         );
         jPanelResizeLayout.setVerticalGroup(
@@ -632,10 +667,10 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelResizenfoURL1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                .addComponent(jLabel17)
+                .addComponent(jLabel1ConvertNbImage)
                 .addGap(11, 11, 11)
                 .addComponent(jButtonConvertirResize)
                 .addContainerGap())
@@ -662,7 +697,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton8.setText("Suppr");
 
         jLabel10.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel10.setText("Astuces");
+        jLabel10.setText("Infos");
         jLabel10.setToolTipText("<html>\nOn peux appyer sur les fleches haut/bas pour monter/decendre un fichier<br>\n<br>\nOn peux appyer sur suppr pour supprimer une ligne\n</html>");
 
         javax.swing.GroupLayout jPanelRenameLayout = new javax.swing.GroupLayout(jPanelRename);
@@ -678,7 +713,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton5)
                     .addComponent(jButton8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonConvertirRename, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRenameLayout.createSequentialGroup()
@@ -762,12 +797,11 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextFieldResizeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldResizeTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldResizeTextActionPerformed
 
     private void jLabelResizenfoURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelResizenfoURL1MouseClicked
-
         String url = "https://imagemagick.org/script/command-line-processing.php#geometry";
         openURL(url);
     }//GEN-LAST:event_jLabelResizenfoURL1MouseClicked
@@ -789,14 +823,7 @@ public class NewJFrame extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        new File(folder, "originals").mkdirs();
-        File originalPdf = new File(folder, "originals/" + pdf.getName());
-        try {
-            FileUtils.moveFile(pdf, originalPdf);
-        } catch (IOException ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        moveFileToFolder(pdf, "originals");
         File jpgs[] = getFiles(folder, false, ".jpg");
         jLabelPdf2imgNbImg.setText("Nombres d'images: " + jpgs.length);
     }//GEN-LAST:event_jButtonConvertPdf2ImgActionPerformed
@@ -826,7 +853,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelCropInfosMouseClicked
 
     private void jButtonConvertCropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertCropActionPerformed
-        new File(folder, "rendu").mkdirs();
+        new File(folder, "crop").mkdirs();
         File[] files = getFiles(folder, false, ".jpg");
         int i = 0;
         for (File file : files) {
@@ -852,11 +879,11 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConvertCropActionPerformed
 
     private void jLabelImg2PdfOriginalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2PdfOriginalMouseClicked
-        JOptionPane.showMessageDialog(this, "Mets la taille original des images dans le PDF (faites un resize avant !)\nPratique quand les formats ne sont pas standards\nSi l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final", "Info", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Mets la taille original des images dans le PDF (faites un resize avant !)\nPratique quand les formats ne sont pas standards\nSi l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final");
     }//GEN-LAST:event_jLabelImg2PdfOriginalMouseClicked
 
     private void jButtonConvertImg2PdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertImg2PdfActionPerformed
-        File files[] = getFiles(folder, true, ".jpg");
+        File files[] = getFiles(folder, false, ".jpg");
         PageSize pg = null;
         try {
             if (jRadioButtonOriginal.isSelected()) {
@@ -870,15 +897,71 @@ public class NewJFrame extends javax.swing.JFrame {
                 pg = new PageSize(Float.parseFloat(jFormattedTextFieldImg2PdfWidth.getText()), Float.parseFloat(jFormattedTextFieldImg2PdfHeight.getText()));
             }
             magick.launchImg2Pdf(files, pg);
-            jLabelImg2PDFNbImg1.setText("Nombres d'images: "+files.length);
+            jLabelImg2PDFNbImg1.setText("Nombres d'images: " + files.length);
         } catch (Exception ex) {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonConvertImg2PdfActionPerformed
 
     private void jLabelImg2StendardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2StendardMouseClicked
-        JOptionPane.showMessageDialog(this, "Si l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final", "Info", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Si l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final");
     }//GEN-LAST:event_jLabelImg2StendardMouseClicked
+
+    private void jButtonConvertirRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirRotateActionPerformed
+        new File(folder, "rotate").mkdirs();
+        File files[] = getFiles(folder, false, ".jpg");
+        int i = 0;
+        for (File file : files) {
+            i++;
+            try {
+                magick.laumchRotateMagik(file, jTextFieldRotate.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        jLabel1RotateNbImg.setText("Nombres d'images: " + i + "/" + files.length);
+    }//GEN-LAST:event_jButtonConvertirRotateActionPerformed
+
+    private void jLabelRotateURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRotateURL1MouseClicked
+        JOptionPane.showMessageDialog(this, "Mettre (en degrés) la rotation.\nPeux etre négatif\n\nExemple: 90 ou -90");
+    }//GEN-LAST:event_jLabelRotateURL1MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        JOptionPane.showMessageDialog(this, "La sortie serra toujours en .jpg");
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jButtonConvertireConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertireConvertActionPerformed
+        if (!jTextFieldConvertExt.getText().startsWith(".")) {
+            jTextFieldConvertExt.setText("." + jTextFieldConvertExt.getText().trim());
+        }
+        File files[] = getFiles(folder, false, jTextFieldConvertExt.getText());
+        new File(folder, "convert").mkdirs();
+        int i = 0;
+        for (File file : files) {
+            try {
+                i++;
+                magick.launchConvertInm(file, ".jpg");
+            } catch (Exception ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        jLabelConvertNbImg.setText("Nombres d'images: " + i + "/" + files.length);
+    }//GEN-LAST:event_jButtonConvertireConvertActionPerformed
+
+    private void jButtonConvertirResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirResizeActionPerformed
+        File files[] = getFiles(folder, false, ".jpg");
+        new File(folder, "resize").mkdirs();
+        int i = 0;
+        for (File file : files) {
+            try {
+                i++;
+                magick.launchResize(file, jTextFieldResizeText.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        jLabel1ConvertNbImage.setText("Nombres d'images: " + i + "/" + files.length);
+    }//GEN-LAST:event_jButtonConvertirResizeActionPerformed
 
     private void openURL(String url) {
         Desktop desktop = java.awt.Desktop.getDesktop();
@@ -957,18 +1040,18 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldPdf2Img;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel1ConvertNbImage;
+    private javax.swing.JLabel jLabel1RotateNbImg;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelConvertNbImg;
     private javax.swing.JLabel jLabelCropInfos;
     private javax.swing.JLabel jLabelCropNbImg;
     private javax.swing.JLabel jLabelCropinfoGeometryURL;
@@ -994,10 +1077,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonStendard;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextFieldConvertExt;
     private javax.swing.JTextField jTextFieldDensite1;
     private javax.swing.JTextField jTextFieldDensite2;
+    private javax.swing.JTextField jTextFieldResizeText;
+    private javax.swing.JTextField jTextFieldRotate;
     // End of variables declaration//GEN-END:variables
 }
