@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
 import com.itextpdf.layout.element.Image;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
 
@@ -81,7 +82,8 @@ public class NewJFrame extends javax.swing.JFrame {
         model.setSelectedItem("A5");
         this.jComboBoxImg2PdfPageSize.setModel(model);
 
-        this.jListCrop.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        this.jListCropAGarder.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        this.jListCropAExclure.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
     }
 
@@ -134,9 +136,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelCropinfoGeometryURL = new javax.swing.JLabel();
         jLabelCropInfos = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jListCrop = new javax.swing.JList<>();
-        jButtonCropToutSelectionner = new javax.swing.JButton();
+        jListCropAGarder = new javax.swing.JList<>();
         jButtonCropLister = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListCropAExclure = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        jButtonCropToExclude = new javax.swing.JButton();
+        jButtonCropToInclude = new javax.swing.JButton();
+        jLabelCropInfosList = new javax.swing.JLabel();
         jPanelimg2Pdf = new javax.swing.JPanel();
         jButtonConvertImg2Pdf = new javax.swing.JButton();
         jComboBoxImg2PdfPageSize = new javax.swing.JComboBox<>();
@@ -205,7 +213,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 153, 255));
         jLabel6.setText("Infos");
         jLabel6.setToolTipText("");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -229,7 +237,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(81, 81, 81))
                     .addGroup(jPanelPdf2ImagLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
                         .addComponent(jButtonConvertPdf2Img)))
                 .addContainerGap())
             .addGroup(jPanelPdf2ImagLayout.createSequentialGroup()
@@ -280,7 +288,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelCropinfoGeometryURL.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropinfoGeometryURL.setText("Infos");
-        jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCropinfoGeometryURL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCropinfoGeometryURLMouseClicked(evt);
@@ -289,27 +297,48 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelCropInfos.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropInfos.setText("Infos");
-        jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCropInfos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCropInfosMouseClicked(evt);
             }
         });
 
-        jScrollPane1.setViewportView(jListCrop);
-
-        jButtonCropToutSelectionner.setText("Tout sélectionner");
-        jButtonCropToutSelectionner.setEnabled(false);
-        jButtonCropToutSelectionner.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCropToutSelectionnerActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(jListCropAGarder);
 
         jButtonCropLister.setText("Lister");
         jButtonCropLister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCropListerActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("A garder");
+
+        jScrollPane3.setViewportView(jListCropAExclure);
+
+        jLabel4.setText("A exclure");
+
+        jButtonCropToExclude.setText(">");
+        jButtonCropToExclude.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCropToExcludeActionPerformed(evt);
+            }
+        });
+
+        jButtonCropToInclude.setText("<");
+        jButtonCropToInclude.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCropToIncludeActionPerformed(evt);
+            }
+        });
+
+        jLabelCropInfosList.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelCropInfosList.setText("Infos");
+        jLabelCropInfosList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCropInfosList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCropInfosListMouseClicked(evt);
             }
         });
 
@@ -319,8 +348,7 @@ public class NewJFrame extends javax.swing.JFrame {
             jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCropLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCropLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(57, 57, 57)
@@ -328,28 +356,40 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(jPanelCropLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(57, 57, 57)
-                        .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1)
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonCropToInclude)
+                            .addComponent(jButtonCropToExclude, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCropinfoGeometryURL, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCropInfos, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButtonCropLister, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonCropToutSelectionner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
-                        .addGap(157, 157, 157)
+                        .addGap(0, 149, Short.MAX_VALUE)
                         .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonConvertCrop, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
                                 .addComponent(jLabelCropNbImg)
-                                .addGap(78, 78, 78)))))
+                                .addGap(78, 78, 78))))
+                    .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCropinfoGeometryURL, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelCropInfos, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCropLister)
+                            .addComponent(jLabelCropInfosList, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
-                    .addContainerGap(520, Short.MAX_VALUE)
+                    .addContainerGap(594, Short.MAX_VALUE)
                     .addComponent(jLabelNbImageCrop, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(8, 8, 8)))
         );
@@ -366,20 +406,31 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCropInfos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
                 .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCropLister)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonCropToutSelectionner)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelCropNbImg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonConvertCrop)
-                        .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
+                                .addComponent(jButtonCropLister)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelCropInfosList)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelCropNbImg)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonConvertCrop)
+                                .addContainerGap())
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3)))
                     .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jButtonCropToExclude)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))))
+                        .addComponent(jButtonCropToInclude)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelCropLayout.createSequentialGroup()
                     .addContainerGap(199, Short.MAX_VALUE)
@@ -398,7 +449,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2PdfBDBelge.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2PdfBDBelge.setText("Infos");
-        jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2PdfBDBelge.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2PdfBDBelgeMouseClicked(evt);
@@ -418,7 +469,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2PdfOriginal.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2PdfOriginal.setText("Infos");
-        jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2PdfOriginal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2PdfOriginalMouseClicked(evt);
@@ -427,7 +478,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2Stendard.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2Stendard.setText("Infos");
-        jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2Stendard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2StendardMouseClicked(evt);
@@ -521,7 +572,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelRotateURL1.setForeground(new java.awt.Color(0, 153, 255));
         jLabelRotateURL1.setText("Infos");
         jLabelRotateURL1.setToolTipText("");
-        jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelRotateURL1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRotateURL1MouseClicked(evt);
@@ -550,7 +601,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 219, Short.MAX_VALUE))
+                        .addGap(0, 284, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonConvertirRotate)))
@@ -584,7 +635,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 153, 255));
         jLabel14.setText("Infos");
         jLabel14.setToolTipText("");
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
@@ -613,7 +664,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(jLabel14)
-                        .addContainerGap(246, Short.MAX_VALUE))
+                        .addContainerGap(286, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -647,7 +698,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelResizenfoURL1.setForeground(new java.awt.Color(0, 153, 255));
         jLabelResizenfoURL1.setText("Infos");
-        jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelResizenfoURL1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelResizenfoURL1MouseClicked(evt);
@@ -676,7 +727,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jLabelResizenfoURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(156, Short.MAX_VALUE))
+                        .addContainerGap(216, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -742,7 +793,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 153, 255));
         jLabel10.setText("Infos");
         jLabel10.setToolTipText("On peux appyer sur les fleches haut/bas pour monter/decendre un fichier\\n\nOn peux appuyer sur Page up/pagedown pour aller de 10 en 10\\n\nOn peux appyer sur suppr pour supprimer une ligne\n");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -802,7 +853,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanelRenameLayout.createSequentialGroup()
                         .addComponent(jButtonRenamePgDown)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                         .addComponent(jLabelRenameNbImage1)
                         .addGap(82, 82, 82))))
         );
@@ -931,29 +982,54 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButtonConvertCropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertCropActionPerformed
         new File(folder, "crop").mkdirs();
-        DefaultListModel<String> model = (DefaultListModel<String>) jListCrop.getModel();
-        //  int i = 0;
-        int indices[] = jListCrop.getSelectedIndices();
-        for (int i = 0; i < indices.length; i++) {
-            File file = new File(folder, model.elementAt(i))
+        DefaultListModel<String> model = (DefaultListModel<String>) jListCropAGarder.getModel();
+        boolean auto1 = jTextFieldCrop1.getText().contains("Auto");
+        boolean auto2 = jTextFieldCrop2.getText().contains("Auto");
+        String crop1 = "";
+        String crop2 = "";
+        Iterator<String> it = model.elements().asIterator();
+        int i = 0;
+        while (it.hasNext()) {
+            File file = new File(folder, it.next());
             try {
                 BufferedImage img = ImageIO.read(file);
 
                 int h = img.getHeight();
                 int w = img.getWidth();
-
-                String crop1 = w / 2 + "x" + h + "-0-0";
-                String crop2 = w / 2 + "x" + h + "+" + w / 2 + "-0";
+                if (auto1) {
+                    crop1 = w / 2 + "x" + h + "-0-0";
+                } else {
+                    crop1 = jTextFieldCrop1.getText();
+                }
+                if (auto2) {
+                    crop2 = w / 2 + "x" + h + "+" + w / 2 + "-0";
+                } else {
+                    crop2 = jTextFieldCrop2.getText();
+                }
 
                 magick.laumchCropMagik(file, crop1, 1);
                 magick.laumchCropMagik(file, crop2, 2);
 
                 i += 2;
-                jLabelCropNbImg.setText("Nombres d'images: " + i + "/" + (files.length * 2));
+                jLabelCropNbImg.setText("Nombres d'images: " + i + "/" + (model.size() * 2));
             } catch (Exception ex) {
                 Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListCropAExclure.getModel();
+        Iterator<String> itE = modelExclude.elements().asIterator();
+        while (itE.hasNext()) {
+            String fn = itE.next();
+            File file = new File(folder, fn);
+            File newFile = new File(folder, "crop/"+fn);
+            try {
+                FileUtils.copyFile(file, newFile);
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
     }//GEN-LAST:event_jButtonConvertCropActionPerformed
 
     private void jLabelImg2PdfOriginalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2PdfOriginalMouseClicked
@@ -1170,23 +1246,49 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelRenameNbImage1.setText("Nombres d'images: " + model.getSize() + "/" + model.getSize());
     }//GEN-LAST:event_jButtonConvertirRenameActionPerformed
 
-    private void jButtonCropToutSelectionnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropToutSelectionnerActionPerformed
-
-    }//GEN-LAST:event_jButtonCropToutSelectionnerActionPerformed
-
     private void jButtonCropListerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropListerActionPerformed
         File files[] = getFiles(folder, null);
         DefaultListModel<String> model = new DefaultListModel<>();
         for (File file : files) {
             model.addElement(file.getName());
         }
-        jListCrop.setModel(model);
+        jListCropAGarder.setModel(model);
+        jListCropAExclure.setModel(new DefaultListModel<>());
         if (model.size() > 0) {
-            jButtonCropToutSelectionner.setEnabled(true);
             jButtonConvertCrop.setEnabled(true);
         }
 
     }//GEN-LAST:event_jButtonCropListerActionPerformed
+
+    private void jButtonCropToExcludeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropToExcludeActionPerformed
+        DefaultListModel<String> modelGarde = (DefaultListModel<String>) jListCropAGarder.getModel();
+        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListCropAExclure.getModel();
+        int indices[] = jListCropAGarder.getSelectedIndices();
+        for (int i = 0; i < indices.length; i++) {
+            String value = modelGarde.get(indices[i]);
+            modelExclude.addElement(value);
+        }
+        for (int i = (indices.length - 1); i > -1; i--) {
+            modelGarde.removeElementAt(indices[i]);
+        }
+    }//GEN-LAST:event_jButtonCropToExcludeActionPerformed
+
+    private void jButtonCropToIncludeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropToIncludeActionPerformed
+        DefaultListModel<String> modelGarde = (DefaultListModel<String>) jListCropAGarder.getModel();
+        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListCropAExclure.getModel();
+        int indices[] = jListCropAExclure.getSelectedIndices();
+        for (int i = 0; i < indices.length; i++) {
+            String value = modelExclude.get(indices[i]);
+            modelGarde.addElement(value);
+        }
+        for (int i = (indices.length - 1); i > -1; i--) {
+            modelExclude.removeElementAt(indices[i]);
+        }
+    }//GEN-LAST:event_jButtonCropToIncludeActionPerformed
+
+    private void jLabelCropInfosListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropInfosListMouseClicked
+        JOptionPane.showMessageDialog(this, "Maintenir shift pour selectionner plusieurs lignes");
+    }//GEN-LAST:event_jLabelCropInfosListMouseClicked
 
     private boolean resetList = false;
 
@@ -1255,7 +1357,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConvertirRotate;
     private javax.swing.JButton jButtonConvertireConvert;
     private javax.swing.JButton jButtonCropLister;
-    private javax.swing.JButton jButtonCropToutSelectionner;
+    private javax.swing.JButton jButtonCropToExclude;
+    private javax.swing.JButton jButtonCropToInclude;
     private javax.swing.JButton jButtonOpenFolder;
     private javax.swing.JButton jButtonRenameDown;
     private javax.swing.JButton jButtonRenamePgDown;
@@ -1267,6 +1370,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldImg2PdfHeight;
     private javax.swing.JFormattedTextField jFormattedTextFieldImg2PdfWidth;
     private javax.swing.JFormattedTextField jFormattedTextFieldPdf2Img;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -1277,11 +1381,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1RotateNbImg;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelConvertNbImg;
     private javax.swing.JLabel jLabelCropInfos;
+    private javax.swing.JLabel jLabelCropInfosList;
     private javax.swing.JLabel jLabelCropNbImg;
     private javax.swing.JLabel jLabelCropinfoGeometryURL;
     private javax.swing.JLabel jLabelFolder;
@@ -1294,7 +1400,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelRenameNbImage1;
     private javax.swing.JLabel jLabelResizenfoURL1;
     private javax.swing.JLabel jLabelRotateURL1;
-    private javax.swing.JList<String> jListCrop;
+    private javax.swing.JList<String> jListCropAExclure;
+    private javax.swing.JList<String> jListCropAGarder;
     private javax.swing.JList<String> jListRenameList;
     private javax.swing.JPanel jPanelConvert;
     private javax.swing.JPanel jPanelCrop;
@@ -1308,6 +1415,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonStendard;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextFieldConvertExt;
     private javax.swing.JTextField jTextFieldCrop1;
