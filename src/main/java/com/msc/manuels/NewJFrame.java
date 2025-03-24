@@ -84,6 +84,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         this.jListCropAGarder.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jListCropAExclure.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        this.jListRotate.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
     }
 
@@ -125,6 +126,18 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelPdf2imgNbImg = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jFormattedTextFieldPdf2Img = new javax.swing.JFormattedTextField();
+        jPanelRename = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jListRenameList = new javax.swing.JList<>();
+        jButtonConvertirRename = new javax.swing.JButton();
+        jButtonRenameUp = new javax.swing.JButton();
+        jButtonRenameDown = new javax.swing.JButton();
+        jButtonRenameSuppr = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jButtonRenameReset = new javax.swing.JButton();
+        jLabelRenameNbImage1 = new javax.swing.JLabel();
+        jButtonRenamePgUp = new javax.swing.JButton();
+        jButtonRenamePgDown = new javax.swing.JButton();
         jPanelCrop = new javax.swing.JPanel();
         jButtonConvertCrop = new javax.swing.JButton();
         jTextFieldCrop1 = new javax.swing.JTextField();
@@ -158,38 +171,33 @@ public class NewJFrame extends javax.swing.JFrame {
         jFormattedTextFieldImg2PdfHeight = new javax.swing.JFormattedTextField();
         jFormattedTextFieldImg2PdfWidth = new javax.swing.JFormattedTextField();
         jLabelImg2PDFNbImg1 = new javax.swing.JLabel();
-        jPanelRotate = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextFieldRotate = new javax.swing.JTextField();
-        jLabelRotateURL1 = new javax.swing.JLabel();
-        jButtonConvertirRotate = new javax.swing.JButton();
-        jLabel1RotateNbImg = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jPanelConvert = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jTextFieldConvertExt = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jButtonConvertireConvert = new javax.swing.JButton();
-        jLabelConvertNbImg = new javax.swing.JLabel();
         jPanelResize = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jTextFieldResizeText = new javax.swing.JTextField();
         jLabelResizenfoURL1 = new javax.swing.JLabel();
         jButtonConvertirResize = new javax.swing.JButton();
         jLabel1ConvertNbImage = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jPanelRename = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jListRenameList = new javax.swing.JList<>();
-        jButtonConvertirRename = new javax.swing.JButton();
-        jButtonRenameUp = new javax.swing.JButton();
-        jButtonRenameDown = new javax.swing.JButton();
-        jButtonRenameSuppr = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jButtonRenameReset = new javax.swing.JButton();
-        jLabelRenameNbImage1 = new javax.swing.JLabel();
-        jButtonRenamePgUp = new javax.swing.JButton();
-        jButtonRenamePgDown = new javax.swing.JButton();
+        jCheckBoxResize = new javax.swing.JCheckBox();
+        jLabelResizenfoURL2 = new javax.swing.JLabel();
+        jPanelConvert = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jTextFieldConvertExt = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jButtonConvertireConvert = new javax.swing.JButton();
+        jLabelConvertNbImg = new javax.swing.JLabel();
+        jPanelRotate = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextFieldRotate = new javax.swing.JTextField();
+        jLabelRotateURL1 = new javax.swing.JLabel();
+        jButtonConvertirRotate = new javax.swing.JButton();
+        jLabel1RotateNbImg = new javax.swing.JLabel();
+        jCheckBoxRotate = new javax.swing.JCheckBox();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jListRotate = new javax.swing.JList<>();
+        jLabel7 = new javax.swing.JLabel();
+        jButtonRotateLister = new javax.swing.JButton();
+        jLabelRotateInfos = new javax.swing.JLabel();
+        jCheckBoxRotateAllSelect = new javax.swing.JCheckBox();
         jLabelFolder = new javax.swing.JLabel();
         jButtonOpenFolder = new javax.swing.JButton();
 
@@ -239,7 +247,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(81, 81, 81))
                     .addGroup(jPanelPdf2ImagLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
                         .addComponent(jButtonConvertPdf2Img)))
                 .addContainerGap())
             .addGroup(jPanelPdf2ImagLayout.createSequentialGroup()
@@ -269,507 +277,6 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Pdf2Img", jPanelPdf2Imag);
-
-        jButtonConvertCrop.setText("Convertir");
-        jButtonConvertCrop.setEnabled(false);
-        jButtonConvertCrop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConvertCropActionPerformed(evt);
-            }
-        });
-
-        jTextFieldCrop1.setText("Auto");
-
-        jLabel5.setText("Crop page 1");
-
-        jLabelCropNbImg.setText("Nombres d'images:");
-
-        jLabel8.setText("Crop page 2");
-
-        jTextFieldCrop2.setText("Auto");
-
-        jLabelCropinfoGeometryURL.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelCropinfoGeometryURL.setText("Infos");
-        jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelCropinfoGeometryURL.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelCropinfoGeometryURLMouseClicked(evt);
-            }
-        });
-
-        jLabelCropInfos.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelCropInfos.setText("Infos");
-        jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelCropInfos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelCropInfosMouseClicked(evt);
-            }
-        });
-
-        jScrollPane1.setViewportView(jListCropAGarder);
-
-        jButtonCropLister.setText("Lister");
-        jButtonCropLister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCropListerActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("A garder");
-
-        jScrollPane3.setViewportView(jListCropAExclure);
-
-        jLabel4.setText("A exclure");
-
-        jButtonCropToExclude.setText(">");
-        jButtonCropToExclude.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCropToExcludeActionPerformed(evt);
-            }
-        });
-
-        jButtonCropToInclude.setText("<");
-        jButtonCropToInclude.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCropToIncludeActionPerformed(evt);
-            }
-        });
-
-        jLabelCropInfosList.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelCropInfosList.setText("Infos");
-        jLabelCropInfosList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelCropInfosList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelCropInfosListMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelCropLayout = new javax.swing.GroupLayout(jPanelCrop);
-        jPanelCrop.setLayout(jPanelCropLayout);
-        jPanelCropLayout.setHorizontalGroup(
-            jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCropLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(57, 57, 57)
-                        .addComponent(jTextFieldCrop1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(57, 57, 57)
-                        .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1)
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonCropToInclude)
-                            .addComponent(jButtonCropToExclude, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addGap(0, 149, Short.MAX_VALUE)
-                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonConvertCrop, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
-                                .addComponent(jLabelCropNbImg)
-                                .addGap(78, 78, 78))))
-                    .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCropinfoGeometryURL, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCropInfos, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonCropLister)
-                            .addComponent(jLabelCropInfosList, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
-                    .addContainerGap(594, Short.MAX_VALUE)
-                    .addComponent(jLabelNbImageCrop, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(8, 8, 8)))
-        );
-        jPanelCropLayout.setVerticalGroup(
-            jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextFieldCrop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCropinfoGeometryURL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCropInfos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4))
-                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
-                                .addComponent(jButtonCropLister)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelCropInfosList)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelCropNbImg)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonConvertCrop)
-                                .addContainerGap())
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)))
-                    .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jButtonCropToExclude)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonCropToInclude)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCropLayout.createSequentialGroup()
-                    .addContainerGap(199, Short.MAX_VALUE)
-                    .addComponent(jLabelNbImageCrop, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(67, 67, 67)))
-        );
-
-        jTabbedPane2.addTab("Crop", jPanelCrop);
-
-        jButtonConvertImg2Pdf.setText("Convertir");
-        jButtonConvertImg2Pdf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConvertImg2PdfActionPerformed(evt);
-            }
-        });
-
-        jLabelImg2PdfBDBelge.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelImg2PdfBDBelge.setText("Infos");
-        jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelImg2PdfBDBelge.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelImg2PdfBDBelgeMouseClicked(evt);
-            }
-        });
-
-        buttonGroupImg2Pdf.add(jRadioButtonStendard);
-        jRadioButtonStendard.setSelected(true);
-
-        buttonGroupImg2Pdf.add(jRadioButtonOriginal);
-        jRadioButtonOriginal.setText("Original");
-
-        buttonGroupImg2Pdf.add(jRadioButtonBdBelge);
-        jRadioButtonBdBelge.setText("Autre");
-
-        jLabel18.setText("En pixel");
-
-        jLabelImg2PdfOriginal.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelImg2PdfOriginal.setText("Infos");
-        jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelImg2PdfOriginal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelImg2PdfOriginalMouseClicked(evt);
-            }
-        });
-
-        jLabelImg2Stendard.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelImg2Stendard.setText("Infos");
-        jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelImg2Stendard.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelImg2StendardMouseClicked(evt);
-            }
-        });
-
-        jFormattedTextFieldImg2PdfHeight.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextFieldImg2PdfHeight.setText("1248");
-
-        jFormattedTextFieldImg2PdfWidth.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextFieldImg2PdfWidth.setText("936");
-
-        jLabelImg2PDFNbImg1.setText("Nombres d'images:");
-
-        javax.swing.GroupLayout jPanelimg2PdfLayout = new javax.swing.GroupLayout(jPanelimg2Pdf);
-        jPanelimg2Pdf.setLayout(jPanelimg2PdfLayout);
-        jPanelimg2PdfLayout.setHorizontalGroup(
-            jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonConvertImg2Pdf)
-                        .addContainerGap())
-                    .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
-                                .addComponent(jRadioButtonOriginal)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
-                                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
-                                        .addComponent(jRadioButtonStendard)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jComboBoxImg2PdfPageSize, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
-                                        .addComponent(jRadioButtonBdBelge)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jFormattedTextFieldImg2PdfWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jFormattedTextFieldImg2PdfHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addComponent(jLabel18)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelImg2PdfOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelImg2PdfBDBelge, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelImg2Stendard, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(157, 157, 157))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelImg2PDFNbImg1)
-                .addGap(84, 84, 84))
-        );
-        jPanelimg2PdfLayout.setVerticalGroup(
-            jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonStendard)
-                    .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBoxImg2PdfPageSize, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelImg2Stendard)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonOriginal)
-                    .addComponent(jLabelImg2PdfOriginal))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonBdBelge)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabelImg2PdfBDBelge)
-                    .addComponent(jFormattedTextFieldImg2PdfWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextFieldImg2PdfHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(jLabelImg2PDFNbImg1)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonConvertImg2Pdf)
-                .addContainerGap())
-        );
-
-        jTabbedPane2.addTab("Img2Pdf", jPanelimg2Pdf);
-
-        jLabel11.setText("Rotation");
-
-        jTextFieldRotate.setText("90");
-
-        jLabelRotateURL1.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelRotateURL1.setText("Infos");
-        jLabelRotateURL1.setToolTipText("");
-        jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelRotateURL1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelRotateURL1MouseClicked(evt);
-            }
-        });
-
-        jButtonConvertirRotate.setText("Convertir");
-        jButtonConvertirRotate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConvertirRotateActionPerformed(evt);
-            }
-        });
-
-        jLabel1RotateNbImg.setText("Nombres d'images:");
-
-        jCheckBox2.setText("Ecraser les fichiers originaux ?");
-
-        javax.swing.GroupLayout jPanelRotateLayout = new javax.swing.GroupLayout(jPanelRotate);
-        jPanelRotate.setLayout(jPanelRotateLayout);
-        jPanelRotateLayout.setHorizontalGroup(
-            jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1RotateNbImg)
-                .addGap(84, 84, 84))
-            .addGroup(jPanelRotateLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonConvertirRotate))
-                    .addGroup(jPanelRotateLayout.createSequentialGroup()
-                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelRotateLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCheckBox2))
-                        .addGap(0, 284, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanelRotateLayout.setVerticalGroup(
-            jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelRotateLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelRotateURL1))
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addComponent(jLabel1RotateNbImg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonConvertirRotate)
-                .addContainerGap())
-        );
-
-        jTabbedPane2.addTab("Rotate", jPanelRotate);
-
-        jLabel13.setText("Quel extention convertir ?");
-
-        jTextFieldConvertExt.setText(".png");
-
-        jLabel14.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel14.setText("Infos");
-        jLabel14.setToolTipText("");
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
-            }
-        });
-
-        jButtonConvertireConvert.setText("Convertir");
-        jButtonConvertireConvert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConvertireConvertActionPerformed(evt);
-            }
-        });
-
-        jLabelConvertNbImg.setText("Nombres d'images:");
-
-        javax.swing.GroupLayout jPanelConvertLayout = new javax.swing.GroupLayout(jPanelConvert);
-        jPanelConvert.setLayout(jPanelConvertLayout);
-        jPanelConvertLayout.setHorizontalGroup(
-            jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConvertLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelConvertLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel14)
-                        .addContainerGap(286, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
-                                .addComponent(jButtonConvertireConvert)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
-                                .addComponent(jLabelConvertNbImg)
-                                .addGap(84, 84, 84))))))
-        );
-        jPanelConvertLayout.setVerticalGroup(
-            jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConvertLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                .addComponent(jLabelConvertNbImg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonConvertireConvert)
-                .addContainerGap())
-        );
-
-        jTabbedPane2.addTab("Convert", jPanelConvert);
-
-        jLabel16.setText("Nouvelle taille:");
-
-        jTextFieldResizeText.setText("50%");
-
-        jLabelResizenfoURL1.setForeground(new java.awt.Color(0, 153, 255));
-        jLabelResizenfoURL1.setText("Infos");
-        jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelResizenfoURL1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelResizenfoURL1MouseClicked(evt);
-            }
-        });
-
-        jButtonConvertirResize.setText("Convertir");
-        jButtonConvertirResize.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConvertirResizeActionPerformed(evt);
-            }
-        });
-
-        jLabel1ConvertNbImage.setText("Nombres d'images:");
-
-        jCheckBox1.setText("Ecraser les fichiers originaux ?");
-
-        javax.swing.GroupLayout jPanelResizeLayout = new javax.swing.GroupLayout(jPanelResize);
-        jPanelResize.setLayout(jPanelResizeLayout);
-        jPanelResizeLayout.setHorizontalGroup(
-            jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelResizeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelResizeLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabelResizenfoURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(216, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
-                                .addComponent(jButtonConvertirResize)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
-                                .addComponent(jLabel1ConvertNbImage)
-                                .addGap(85, 85, 85))))
-                    .addGroup(jPanelResizeLayout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanelResizeLayout.setVerticalGroup(
-            jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelResizeLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelResizenfoURL1))
-                .addGap(29, 29, 29)
-                .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addComponent(jLabel1ConvertNbImage)
-                .addGap(11, 11, 11)
-                .addComponent(jButtonConvertirResize)
-                .addContainerGap())
-        );
-
-        jTabbedPane2.addTab("Resize", jPanelResize);
 
         jListRenameList.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -869,7 +376,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanelRenameLayout.createSequentialGroup()
                         .addComponent(jButtonRenamePgDown)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
                         .addComponent(jLabelRenameNbImage1)
                         .addGap(82, 82, 82))))
         );
@@ -902,6 +409,586 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Rename", jPanelRename);
 
+        jButtonConvertCrop.setText("Convertir");
+        jButtonConvertCrop.setEnabled(false);
+        jButtonConvertCrop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertCropActionPerformed(evt);
+            }
+        });
+
+        jTextFieldCrop1.setText("Auto");
+
+        jLabel5.setText("Crop page 1");
+
+        jLabelCropNbImg.setText("Nombres d'images:");
+
+        jLabel8.setText("Crop page 2");
+
+        jTextFieldCrop2.setText("Auto");
+
+        jLabelCropinfoGeometryURL.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelCropinfoGeometryURL.setText("Infos");
+        jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCropinfoGeometryURL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCropinfoGeometryURLMouseClicked(evt);
+            }
+        });
+
+        jLabelCropInfos.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelCropInfos.setText("Infos");
+        jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCropInfos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCropInfosMouseClicked(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(jListCropAGarder);
+
+        jButtonCropLister.setText("Lister");
+        jButtonCropLister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCropListerActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("A garder");
+
+        jScrollPane3.setViewportView(jListCropAExclure);
+
+        jLabel4.setText("A exclure");
+
+        jButtonCropToExclude.setText(">");
+        jButtonCropToExclude.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCropToExcludeActionPerformed(evt);
+            }
+        });
+
+        jButtonCropToInclude.setText("<");
+        jButtonCropToInclude.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCropToIncludeActionPerformed(evt);
+            }
+        });
+
+        jLabelCropInfosList.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelCropInfosList.setText("Infos");
+        jLabelCropInfosList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCropInfosList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCropInfosListMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCropLayout = new javax.swing.GroupLayout(jPanelCrop);
+        jPanelCrop.setLayout(jPanelCropLayout);
+        jPanelCropLayout.setHorizontalGroup(
+            jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCropLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(57, 57, 57)
+                        .addComponent(jTextFieldCrop1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelCropinfoGeometryURL, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonCropToExclude)
+                            .addComponent(jButtonCropToInclude))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCropLayout.createSequentialGroup()
+                            .addGap(64, 64, 64)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCropLayout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(57, 57, 57)
+                            .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabelCropInfos, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addGap(0, 57, Short.MAX_VALUE)
+                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonConvertCrop, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
+                                .addComponent(jLabelCropNbImg)
+                                .addGap(78, 78, 78))))
+                    .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonCropLister)
+                            .addComponent(jLabelCropInfosList, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
+                    .addContainerGap(610, Short.MAX_VALUE)
+                    .addComponent(jLabelNbImageCrop, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(8, 8, 8)))
+        );
+        jPanelCropLayout.setVerticalGroup(
+            jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextFieldCrop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCropinfoGeometryURL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextFieldCrop2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCropInfos))
+                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCropLister)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelCropInfosList)
+                        .addGap(104, 104, 104))
+                    .addGroup(jPanelCropLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCropLayout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(jButtonCropToExclude)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonCropToInclude)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanelCropLayout.createSequentialGroup()
+                                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                                .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
+                                        .addGap(35, 35, 35)
+                                        .addComponent(jLabelCropNbImg)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonConvertCrop)
+                                        .addContainerGap())
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+            .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCropLayout.createSequentialGroup()
+                    .addContainerGap(199, Short.MAX_VALUE)
+                    .addComponent(jLabelNbImageCrop, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(67, 67, 67)))
+        );
+
+        jTabbedPane2.addTab("Crop", jPanelCrop);
+
+        jButtonConvertImg2Pdf.setText("Convertir");
+        jButtonConvertImg2Pdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertImg2PdfActionPerformed(evt);
+            }
+        });
+
+        jLabelImg2PdfBDBelge.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelImg2PdfBDBelge.setText("Infos");
+        jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelImg2PdfBDBelge.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelImg2PdfBDBelgeMouseClicked(evt);
+            }
+        });
+
+        buttonGroupImg2Pdf.add(jRadioButtonStendard);
+        jRadioButtonStendard.setSelected(true);
+
+        buttonGroupImg2Pdf.add(jRadioButtonOriginal);
+        jRadioButtonOriginal.setText("Original");
+
+        buttonGroupImg2Pdf.add(jRadioButtonBdBelge);
+        jRadioButtonBdBelge.setText("Autre");
+
+        jLabel18.setText("En pixel");
+
+        jLabelImg2PdfOriginal.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelImg2PdfOriginal.setText("Infos");
+        jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelImg2PdfOriginal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelImg2PdfOriginalMouseClicked(evt);
+            }
+        });
+
+        jLabelImg2Stendard.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelImg2Stendard.setText("Infos");
+        jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelImg2Stendard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelImg2StendardMouseClicked(evt);
+            }
+        });
+
+        jFormattedTextFieldImg2PdfHeight.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextFieldImg2PdfHeight.setText("1248");
+
+        jFormattedTextFieldImg2PdfWidth.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextFieldImg2PdfWidth.setText("936");
+
+        jLabelImg2PDFNbImg1.setText("Nombres d'images:");
+
+        javax.swing.GroupLayout jPanelimg2PdfLayout = new javax.swing.GroupLayout(jPanelimg2Pdf);
+        jPanelimg2Pdf.setLayout(jPanelimg2PdfLayout);
+        jPanelimg2PdfLayout.setHorizontalGroup(
+            jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonConvertImg2Pdf)
+                        .addContainerGap())
+                    .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
+                                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonOriginal)
+                                    .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
+                                        .addComponent(jRadioButtonBdBelge)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jFormattedTextFieldImg2PdfWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jFormattedTextFieldImg2PdfHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel18))
+                            .addGroup(jPanelimg2PdfLayout.createSequentialGroup()
+                                .addComponent(jRadioButtonStendard)
+                                .addGap(51, 51, 51)
+                                .addComponent(jComboBoxImg2PdfPageSize, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelImg2PdfOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelImg2PdfBDBelge, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelImg2Stendard, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(229, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelImg2PDFNbImg1)
+                .addGap(84, 84, 84))
+        );
+        jPanelimg2PdfLayout.setVerticalGroup(
+            jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxImg2PdfPageSize, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelImg2Stendard)
+                    .addComponent(jRadioButtonStendard))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelImg2PdfOriginal)
+                    .addComponent(jRadioButtonOriginal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonBdBelge)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabelImg2PdfBDBelge)
+                    .addComponent(jFormattedTextFieldImg2PdfWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldImg2PdfHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(jLabelImg2PDFNbImg1)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonConvertImg2Pdf)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Img2Pdf", jPanelimg2Pdf);
+
+        jLabel16.setText("Nouvelle taille:");
+
+        jTextFieldResizeText.setText("50%");
+
+        jLabelResizenfoURL1.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelResizenfoURL1.setText("Infos1");
+        jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelResizenfoURL1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelResizenfoURL1MouseClicked(evt);
+            }
+        });
+
+        jButtonConvertirResize.setText("Convertir");
+        jButtonConvertirResize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertirResizeActionPerformed(evt);
+            }
+        });
+
+        jLabel1ConvertNbImage.setText("Nombres d'images:");
+
+        jCheckBoxResize.setText("Ecraser les fichiers originaux ?");
+
+        jLabelResizenfoURL2.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelResizenfoURL2.setText("Infos2");
+        jLabelResizenfoURL2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelResizenfoURL2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelResizenfoURL2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelResizeLayout = new javax.swing.GroupLayout(jPanelResize);
+        jPanelResize.setLayout(jPanelResizeLayout);
+        jPanelResizeLayout.setHorizontalGroup(
+            jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelResizeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
+                                .addComponent(jButtonConvertirResize)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
+                                .addComponent(jLabel1ConvertNbImage)
+                                .addGap(85, 85, 85))))
+                    .addGroup(jPanelResizeLayout.createSequentialGroup()
+                        .addComponent(jCheckBoxResize)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelResizeLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelResizenfoURL2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelResizenfoURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(246, Short.MAX_VALUE))))
+        );
+        jPanelResizeLayout.setVerticalGroup(
+            jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelResizeLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelResizenfoURL1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelResizenfoURL2)
+                .addGap(7, 7, 7)
+                .addComponent(jCheckBoxResize)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(jLabel1ConvertNbImage)
+                .addGap(11, 11, 11)
+                .addComponent(jButtonConvertirResize)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Resize", jPanelResize);
+
+        jLabel13.setText("Quel extention convertir ?");
+
+        jTextFieldConvertExt.setText(".png");
+
+        jLabel14.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel14.setText("Infos");
+        jLabel14.setToolTipText("");
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+
+        jButtonConvertireConvert.setText("Convertir");
+        jButtonConvertireConvert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertireConvertActionPerformed(evt);
+            }
+        });
+
+        jLabelConvertNbImg.setText("Nombres d'images:");
+
+        javax.swing.GroupLayout jPanelConvertLayout = new javax.swing.GroupLayout(jPanelConvert);
+        jPanelConvert.setLayout(jPanelConvertLayout);
+        jPanelConvertLayout.setHorizontalGroup(
+            jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConvertLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelConvertLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel14)
+                        .addContainerGap(336, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
+                                .addComponent(jButtonConvertireConvert)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
+                                .addComponent(jLabelConvertNbImg)
+                                .addGap(84, 84, 84))))))
+        );
+        jPanelConvertLayout.setVerticalGroup(
+            jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConvertLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addComponent(jLabelConvertNbImg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonConvertireConvert)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Convert", jPanelConvert);
+
+        jLabel11.setText("Rotation");
+
+        jTextFieldRotate.setText("90");
+
+        jLabelRotateURL1.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelRotateURL1.setText("Infos");
+        jLabelRotateURL1.setToolTipText("");
+        jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelRotateURL1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelRotateURL1MouseClicked(evt);
+            }
+        });
+
+        jButtonConvertirRotate.setText("Convertir");
+        jButtonConvertirRotate.setEnabled(false);
+        jButtonConvertirRotate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertirRotateActionPerformed(evt);
+            }
+        });
+
+        jLabel1RotateNbImg.setText("Nombres d'images:");
+
+        jCheckBoxRotate.setText("Ecraser les fichiers originaux ?");
+
+        jListRotate.setModel(new DefaultListModel<String>());
+        jScrollPane4.setViewportView(jListRotate);
+
+        jLabel7.setText("A convertir");
+
+        jButtonRotateLister.setText("Lister");
+        jButtonRotateLister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRotateListerActionPerformed(evt);
+            }
+        });
+
+        jLabelRotateInfos.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelRotateInfos.setText("Infos");
+        jLabelRotateInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelRotateInfos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelRotateInfosMouseClicked(evt);
+            }
+        });
+
+        jCheckBoxRotateAllSelect.setText("Tout sélectionner");
+        jCheckBoxRotateAllSelect.setEnabled(false);
+        jCheckBoxRotateAllSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxRotateAllSelectActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelRotateLayout = new javax.swing.GroupLayout(jPanelRotate);
+        jPanelRotate.setLayout(jPanelRotateLayout);
+        jPanelRotateLayout.setHorizontalGroup(
+            jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRotateLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCheckBoxRotate))
+                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelRotateLayout.createSequentialGroup()
+                                .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 309, Short.MAX_VALUE))
+                            .addGroup(jPanelRotateLayout.createSequentialGroup()
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButtonConvertirRotate, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
+                                                .addComponent(jLabel1RotateNbImg)
+                                                .addGap(78, 78, 78))))
+                                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButtonRotateLister)
+                                            .addComponent(jLabelRotateInfos)
+                                            .addComponent(jCheckBoxRotateAllSelect))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addContainerGap())
+                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabel7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanelRotateLayout.setVerticalGroup(
+            jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRotateLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelRotateURL1))
+                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBoxRotate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
+                            .addComponent(jLabel1RotateNbImg)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButtonConvertirRotate))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                        .addComponent(jButtonRotateLister)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelRotateInfos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBoxRotateAllSelect)))
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Rotate", jPanelRotate);
+
         jLabelFolder.setText("Repertoire");
 
         jButtonOpenFolder.setText("Ouvrir");
@@ -932,9 +1019,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFolder)
                     .addComponent(jButtonOpenFolder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2)
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addComponent(jTabbedPane2))
         );
 
         pack();
@@ -1087,13 +1173,24 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButtonConvertirResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirResizeActionPerformed
         File files[] = getFiles(folder, ".jpg");
-        new File(folder, "resize").mkdirs();
+        File resizeFolder = new File(folder, "resize");
+        resizeFolder.mkdirs();
         int i = 0;
         for (File file : files) {
             try {
                 i++;
-                magick.launchResize(file, jTextFieldResizeText.getText());
+                File result = magick.launchResize(file, jTextFieldResizeText.getText());
+                if (jCheckBoxResize.isSelected()) {
+                    FileUtils.moveFile(result, file);
+                }
             } catch (Exception ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (jCheckBoxResize.isSelected()) {
+            try {
+                FileUtils.deleteDirectory(resizeFolder);
+            } catch (IOException ex) {
                 Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -1128,22 +1225,39 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jButtonConvertirRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirRotateActionPerformed
-        new File(folder, "rotate").mkdirs();
-        File files[] = getFiles(folder, ".jpg");
-        int i = 0;
-        for (File file : files) {
+        File rotateFolder = new File(folder, "rotate");
+        rotateFolder.mkdirs();
+        int indices[] = jListRotate.getSelectedIndices();
+        for (int i = 0; i < indices.length; i++) {
+            File file = new File(folder, jListRotate.getModel().getElementAt(indices[i]));
             i++;
+            String result = null;
             try {
-                magick.laumchRotateMagik(file, jTextFieldRotate.getText());
+                result = magick.laumchRotateMagik(file, jTextFieldRotate.getText());
             } catch (Exception ex) {
                 Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
+            if (jCheckBoxRotate.isSelected() && result != null) {
+                File f = new File(result);
+                try {
+                    FileUtils.moveFile(f, file);
+                } catch (IOException ex) {
+                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
-        jLabel1RotateNbImg.setText("Nombres d'images: " + i + "/" + files.length);
+        if (jCheckBoxRotate.isSelected()) {
+            try {
+                FileUtils.deleteDirectory(rotateFolder);
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        jLabel1RotateNbImg.setText("Nombres d'images: " + indices.length + "/" + indices.length);
     }//GEN-LAST:event_jButtonConvertirRotateActionPerformed
 
     private void jLabelRotateURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRotateURL1MouseClicked
-        JOptionPane.showMessageDialog(this, "Mettre (en degrés) la rotation.\nPeux etre négatif\n\nExemple: 90 ou -90");
+        JOptionPane.showMessageDialog(this, "Mettre (en degrés) la rotation.\nPeux etre négatif\n\nExemple: 90 ou -90\nPrends que des .jpg");
     }//GEN-LAST:event_jLabelRotateURL1MouseClicked
 
     private void jLabelImg2StendardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2StendardMouseClicked
@@ -1272,7 +1386,7 @@ public class NewJFrame extends javax.swing.JFrame {
         while (itE.hasNext()) {
             String fn = itE.next();
             File file = new File(folder, fn);
-            File newFile = new File(folder, "crop/"+fn);
+            File newFile = new File(folder, "crop/" + fn);
             try {
                 FileUtils.copyFile(file, newFile);
             } catch (IOException ex) {
@@ -1303,6 +1417,39 @@ public class NewJFrame extends javax.swing.JFrame {
         File jpgs[] = getFiles(folder, ".jpg");
         jLabelPdf2imgNbImg.setText("Nombres d'images: " + jpgs.length);
     }//GEN-LAST:event_jButtonConvertPdf2ImgActionPerformed
+
+    private void jLabelResizenfoURL2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelResizenfoURL2MouseClicked
+        JOptionPane.showMessageDialog(this, "Resize que des .jpg");
+    }//GEN-LAST:event_jLabelResizenfoURL2MouseClicked
+
+    private void jLabelRotateInfosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRotateInfosMouseClicked
+        JOptionPane.showMessageDialog(this, "maintenir shift pour en selectionner plusieurs");
+    }//GEN-LAST:event_jLabelRotateInfosMouseClicked
+
+    private void jCheckBoxRotateAllSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxRotateAllSelectActionPerformed
+        if (jListRotate.getModel().getSize() <= 0) {
+            return;
+        }
+        int selctions[] = new int[jListRotate.getModel().getSize()];
+        for (int i = 0; i < selctions.length; i++) {
+            selctions[i] = i;
+        }
+        jListRotate.setSelectedIndices(selctions);
+        jListRotate.setEnabled(!jCheckBoxRotateAllSelect.isSelected());
+    }//GEN-LAST:event_jCheckBoxRotateAllSelectActionPerformed
+
+    private void jButtonRotateListerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRotateListerActionPerformed
+        File files[] = getFiles(folder, null);
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (File file : files) {
+            model.addElement(file.getName());
+        }
+        jListRotate.setModel(model);
+        if (model.size() > 0) {
+            jButtonConvertirRotate.setEnabled(true);
+            jCheckBoxRotateAllSelect.setEnabled(true);
+        }
+    }//GEN-LAST:event_jButtonRotateListerActionPerformed
 
     private boolean resetList = false;
 
@@ -1380,8 +1527,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRenameReset;
     private javax.swing.JButton jButtonRenameSuppr;
     private javax.swing.JButton jButtonRenameUp;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JButton jButtonRotateLister;
+    private javax.swing.JCheckBox jCheckBoxResize;
+    private javax.swing.JCheckBox jCheckBoxRotate;
+    private javax.swing.JCheckBox jCheckBoxRotateAllSelect;
     private javax.swing.JComboBox<String> jComboBoxImg2PdfPageSize;
     private javax.swing.JFormattedTextField jFormattedTextFieldImg2PdfHeight;
     private javax.swing.JFormattedTextField jFormattedTextFieldImg2PdfWidth;
@@ -1400,6 +1549,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelConvertNbImg;
     private javax.swing.JLabel jLabelCropInfos;
@@ -1415,10 +1565,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPdf2imgNbImg;
     private javax.swing.JLabel jLabelRenameNbImage1;
     private javax.swing.JLabel jLabelResizenfoURL1;
+    private javax.swing.JLabel jLabelResizenfoURL2;
+    private javax.swing.JLabel jLabelRotateInfos;
     private javax.swing.JLabel jLabelRotateURL1;
     private javax.swing.JList<String> jListCropAExclure;
     private javax.swing.JList<String> jListCropAGarder;
     private javax.swing.JList<String> jListRenameList;
+    private javax.swing.JList<String> jListRotate;
     private javax.swing.JPanel jPanelConvert;
     private javax.swing.JPanel jPanelCrop;
     private javax.swing.JPanel jPanelPdf2Imag;
@@ -1432,6 +1585,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextFieldConvertExt;
     private javax.swing.JTextField jTextFieldCrop1;

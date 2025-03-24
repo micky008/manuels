@@ -32,17 +32,18 @@ public class Magick {
         this.CONFIG = config;
     }
 
-    public void launchPdf2Img(File pdf, String density) throws Exception {
+    public File launchPdf2Img(File pdf, String density) throws Exception {
         //Attention tres lent
         int pos = pdf.getName().lastIndexOf('.');
         String fileNameNoExt = pdf.getName().substring(0, pos);
         File result = new File(pdf.getParentFile(), fileNameNoExt + "-%d.jpg");
         String args[] = {CONFIG.magickCommande, "-density", density, pdf.getAbsolutePath(), result.getAbsolutePath()};
-        launchMagick(args);        
+        launchMagick(args);      
+        return result;
     }
 
     //    A ne pas delete
-    public void launchImg2Pdf(File[] files, PageSize pg) throws Exception {
+    public File launchImg2Pdf(File[] files, PageSize pg) throws Exception {
         int pos = files[0].getName().lastIndexOf('.');
         String destStr = files[0].getParentFile().getAbsolutePath() + "/" + files[0].getName().substring(0, pos) + ".pdf";
         File dest = new File(destStr);
@@ -65,9 +66,10 @@ public class Magick {
             doc.add(image);
         }
         doc.close();
+        return dest;
     }
 
-    public void laumchCropMagik(File file, String crop, int i) throws Exception {
+    public String laumchCropMagik(File file, String crop, int i) throws Exception {
 
         int pos = file.getName().lastIndexOf('.');
         String fileNoExt = file.getName().substring(0, pos);
@@ -76,9 +78,10 @@ public class Magick {
 
         String args[] = {CONFIG.magickCommande, file.getAbsolutePath(), "-crop", crop, filename};
         launchMagick(args);
+        return filename;
     }
 
-    public void laumchRotateMagik(File file, String rotate) throws Exception {
+    public String laumchRotateMagik(File file, String rotate) throws Exception {
 
         String filename = file.getParentFile().getAbsolutePath() + "/rotate/" + file.getName();
 
@@ -88,28 +91,31 @@ public class Magick {
             System.err.println(line);
         }
         p.waitFor();
+        return filename;
     }
 
-    public void launchConvertInm(File file, String ext) throws Exception {
+    public File launchConvertInm(File file, String ext) throws Exception {
         int pos = file.getName().lastIndexOf('.');
         String fileNoExt = file.getName().substring(0, pos);
 
         File newFIle = new File(file.getParent(), "convert/" + fileNoExt + ext);
         String args[] = {CONFIG.magickCommande, file.getAbsolutePath(), newFIle.getAbsolutePath()};
         launchMagick(args);
+        return newFIle;
     }
 
-    public void launchResize(File file, String taille) throws Exception {
+    public File launchResize(File file, String taille) throws Exception {
         int pos = file.getName().lastIndexOf('.');
         String fileNoExt = file.getName().substring(0, pos);
 
         File newFIle = new File(file.getParent(), "resize/" + fileNoExt + ".jpg");
         String args[] = {CONFIG.magickCommande, file.getAbsolutePath(), "-resize", taille, newFIle.getAbsolutePath()};
         launchMagick(args);
+        return newFIle;
 
     }
 
-    public void launchMagick(String args[]) {
+    private void launchMagick(String args[]) {
         try {
             Process p = Runtime.getRuntime().exec(args);
             for (String line : IOUtils.readLines(p.getErrorStream(), "UTF-8")) {
