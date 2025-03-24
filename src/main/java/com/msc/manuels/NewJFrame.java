@@ -164,6 +164,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelRotateURL1 = new javax.swing.JLabel();
         jButtonConvertirRotate = new javax.swing.JButton();
         jLabel1RotateNbImg = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
         jPanelConvert = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jTextFieldConvertExt = new javax.swing.JTextField();
@@ -176,6 +177,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelResizenfoURL1 = new javax.swing.JLabel();
         jButtonConvertirResize = new javax.swing.JButton();
         jLabel1ConvertNbImage = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jPanelRename = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListRenameList = new javax.swing.JList<>();
@@ -588,28 +590,33 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel1RotateNbImg.setText("Nombres d'images:");
 
+        jCheckBox2.setText("Ecraser les fichiers originaux ?");
+
         javax.swing.GroupLayout jPanelRotateLayout = new javax.swing.GroupLayout(jPanelRotate);
         jPanelRotate.setLayout(jPanelRotateLayout);
         jPanelRotateLayout.setHorizontalGroup(
             jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelRotateLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRotateLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 284, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonConvertirRotate)))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1RotateNbImg)
                 .addGap(84, 84, 84))
+            .addGroup(jPanelRotateLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonConvertirRotate))
+                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelRotateLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCheckBox2))
+                        .addGap(0, 284, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanelRotateLayout.setVerticalGroup(
             jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -619,7 +626,9 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelRotateURL1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(jLabel1RotateNbImg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonConvertirRotate)
@@ -714,6 +723,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel1ConvertNbImage.setText("Nombres d'images:");
 
+        jCheckBox1.setText("Ecraser les fichiers originaux ?");
+
         javax.swing.GroupLayout jPanelResizeLayout = new javax.swing.GroupLayout(jPanelResize);
         jPanelResize.setLayout(jPanelResizeLayout);
         jPanelResizeLayout.setHorizontalGroup(
@@ -736,7 +747,10 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
                                 .addComponent(jLabel1ConvertNbImage)
-                                .addGap(85, 85, 85))))))
+                                .addGap(85, 85, 85))))
+                    .addGroup(jPanelResizeLayout.createSequentialGroup()
+                        .addComponent(jCheckBox1)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanelResizeLayout.setVerticalGroup(
             jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -746,7 +760,9 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(jTextFieldResizeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelResizenfoURL1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(jLabel1ConvertNbImage)
                 .addGap(11, 11, 11)
                 .addComponent(jButtonConvertirResize)
@@ -924,38 +940,6 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelCropinfoGeometryURLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropinfoGeometryURLMouseClicked
-        String url = "https://imagemagick.org/script/command-line-processing.php#geometry";
-        openURL(url);
-    }//GEN-LAST:event_jLabelCropinfoGeometryURLMouseClicked
-
-    private void jLabelResizenfoURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelResizenfoURL1MouseClicked
-        String url = "https://imagemagick.org/script/command-line-processing.php#geometry";
-        openURL(url);
-    }//GEN-LAST:event_jLabelResizenfoURL1MouseClicked
-
-    private void jLabelImg2PdfBDBelgeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2PdfBDBelgeMouseClicked
-        JOptionPane.showMessageDialog(this, "la taille proposé de base (936x1248) c'est la taille 24cmx32cm soit le format d'une BD (belge)\nCela permet de forcer une taille si l'on ne veux pas de la taille original\nSi l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final", "Info", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jLabelImg2PdfBDBelgeMouseClicked
-
-    private void jButtonConvertPdf2ImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertPdf2ImgActionPerformed
-        File pdfs[] = getFiles(folder, ".pdf");
-        if (pdfs.length == 0) {
-            JOptionPane.showMessageDialog(this, "Pas de pdf trouver dans le repertoire choisi", "Erreur", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        File pdf = pdfs[0];
-
-        try {
-            magick.launchPdf2Img(pdf, jFormattedTextFieldPdf2Img.getText());
-        } catch (Exception ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        moveFileToFolder(pdf, "originals");
-        File jpgs[] = getFiles(folder, ".jpg");
-        jLabelPdf2imgNbImg.setText("Nombres d'images: " + jpgs.length);
-    }//GEN-LAST:event_jButtonConvertPdf2ImgActionPerformed
-
     private void jButtonOpenFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenFolderActionPerformed
         JFileChooser fc = new JFileChooser(config.lastFolder);
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
@@ -972,150 +956,15 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonOpenFolderActionPerformed
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        JOptionPane.showMessageDialog(this, "Plus la densité est grande plus la taille du fichier serra grand et lourd.\n\n300 est un tres bon compromis entre qualité / poids / taille", "Info", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jLabel6MouseClicked
+    private void jButtonRenamePgDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgDownActionPerformed
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_PAGE_DOWN, 'd');
+        jListRenameListKeyPressed(ke);
+    }//GEN-LAST:event_jButtonRenamePgDownActionPerformed
 
-    private void jLabelCropInfosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropInfosMouseClicked
-        JOptionPane.showMessageDialog(this, "En Mode Auto, ca coupe au milieu de l'image.\nSinon il faut mettre une largeure x hauteur (voir \"info sur le templates (geometry) \")\nIl vaut mieux laisser en Auto !", "Info", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jLabelCropInfosMouseClicked
-
-    private void jButtonConvertCropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertCropActionPerformed
-        new File(folder, "crop").mkdirs();
-        DefaultListModel<String> model = (DefaultListModel<String>) jListCropAGarder.getModel();
-        boolean auto1 = jTextFieldCrop1.getText().contains("Auto");
-        boolean auto2 = jTextFieldCrop2.getText().contains("Auto");
-        String crop1 = "";
-        String crop2 = "";
-        Iterator<String> it = model.elements().asIterator();
-        int i = 0;
-        while (it.hasNext()) {
-            File file = new File(folder, it.next());
-            try {
-                BufferedImage img = ImageIO.read(file);
-
-                int h = img.getHeight();
-                int w = img.getWidth();
-                if (auto1) {
-                    crop1 = w / 2 + "x" + h + "-0-0";
-                } else {
-                    crop1 = jTextFieldCrop1.getText();
-                }
-                if (auto2) {
-                    crop2 = w / 2 + "x" + h + "+" + w / 2 + "-0";
-                } else {
-                    crop2 = jTextFieldCrop2.getText();
-                }
-
-                magick.laumchCropMagik(file, crop1, 1);
-                magick.laumchCropMagik(file, crop2, 2);
-
-                i += 2;
-                jLabelCropNbImg.setText("Nombres d'images: " + i + "/" + (model.size() * 2));
-            } catch (Exception ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListCropAExclure.getModel();
-        Iterator<String> itE = modelExclude.elements().asIterator();
-        while (itE.hasNext()) {
-            String fn = itE.next();
-            File file = new File(folder, fn);
-            File newFile = new File(folder, "crop/"+fn);
-            try {
-                FileUtils.copyFile(file, newFile);
-            } catch (IOException ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-
-    }//GEN-LAST:event_jButtonConvertCropActionPerformed
-
-    private void jLabelImg2PdfOriginalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2PdfOriginalMouseClicked
-        JOptionPane.showMessageDialog(this, "Mets la taille original des images dans le PDF (faites un resize avant !)\nPratique quand les formats ne sont pas standards\nSi l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final");
-    }//GEN-LAST:event_jLabelImg2PdfOriginalMouseClicked
-
-    private void jButtonConvertImg2PdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertImg2PdfActionPerformed
-        File files[] = getFiles(folder, ".jpg");
-        PageSize pg = null;
-        try {
-            if (jRadioButtonOriginal.isSelected()) {
-                Image image = new Image(ImageDataFactory.create(files[0].getAbsolutePath()));
-                pg = new PageSize(image.getImageWidth() / 4, image.getImageHeight() / 4);
-            } else if (jRadioButtonStendard.isSelected()) {
-                String resStr = jComboBoxImg2PdfPageSize.getSelectedItem().toString();
-                Field f = PageSize.class.getField(resStr);
-                pg = (PageSize) f.get(null);
-            } else {
-                pg = new PageSize(Float.parseFloat(jFormattedTextFieldImg2PdfWidth.getText()), Float.parseFloat(jFormattedTextFieldImg2PdfHeight.getText()));
-            }
-            magick.launchImg2Pdf(files, pg);
-            jLabelImg2PDFNbImg1.setText("Nombres d'images: " + files.length);
-        } catch (Exception ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButtonConvertImg2PdfActionPerformed
-
-    private void jLabelImg2StendardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2StendardMouseClicked
-        JOptionPane.showMessageDialog(this, "Si l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final");
-    }//GEN-LAST:event_jLabelImg2StendardMouseClicked
-
-    private void jButtonConvertirRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirRotateActionPerformed
-        new File(folder, "rotate").mkdirs();
-        File files[] = getFiles(folder, ".jpg");
-        int i = 0;
-        for (File file : files) {
-            i++;
-            try {
-                magick.laumchRotateMagik(file, jTextFieldRotate.getText());
-            } catch (Exception ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        jLabel1RotateNbImg.setText("Nombres d'images: " + i + "/" + files.length);
-    }//GEN-LAST:event_jButtonConvertirRotateActionPerformed
-
-    private void jLabelRotateURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRotateURL1MouseClicked
-        JOptionPane.showMessageDialog(this, "Mettre (en degrés) la rotation.\nPeux etre négatif\n\nExemple: 90 ou -90");
-    }//GEN-LAST:event_jLabelRotateURL1MouseClicked
-
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        JOptionPane.showMessageDialog(this, "La sortie serra toujours en .jpg");
-    }//GEN-LAST:event_jLabel14MouseClicked
-
-    private void jButtonConvertireConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertireConvertActionPerformed
-        if (!jTextFieldConvertExt.getText().startsWith(".")) {
-            jTextFieldConvertExt.setText("." + jTextFieldConvertExt.getText().trim());
-        }
-        File files[] = getFiles(folder, jTextFieldConvertExt.getText());
-        new File(folder, "convert").mkdirs();
-        int i = 0;
-        for (File file : files) {
-            try {
-                i++;
-                magick.launchConvertInm(file, ".jpg");
-            } catch (Exception ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        jLabelConvertNbImg.setText("Nombres d'images: " + i + "/" + files.length);
-    }//GEN-LAST:event_jButtonConvertireConvertActionPerformed
-
-    private void jButtonConvertirResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirResizeActionPerformed
-        File files[] = getFiles(folder, ".jpg");
-        new File(folder, "resize").mkdirs();
-        int i = 0;
-        for (File file : files) {
-            try {
-                i++;
-                magick.launchResize(file, jTextFieldResizeText.getText());
-            } catch (Exception ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        jLabel1ConvertNbImage.setText("Nombres d'images: " + i + "/" + files.length);
-    }//GEN-LAST:event_jButtonConvertirResizeActionPerformed
+    private void jButtonRenamePgUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgUpActionPerformed
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_PAGE_UP, 'u');
+        jListRenameListKeyPressed(ke);
+    }//GEN-LAST:event_jButtonRenamePgUpActionPerformed
 
     private void jButtonRenameResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameResetActionPerformed
         File files[] = getFiles(folder, null);
@@ -1145,6 +994,42 @@ public class NewJFrame extends javax.swing.JFrame {
         java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_UP, 'u');
         jListRenameListKeyPressed(ke);
     }//GEN-LAST:event_jButtonRenameUpActionPerformed
+
+    private void jButtonConvertirRenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirRenameActionPerformed
+        DefaultListModel<String> model = (DefaultListModel<String>) jListRenameList.getModel();
+        if (model == null || model.size() <= 0) {
+            return;
+        }
+        int len = model.size();
+        int j = -1;
+        while (len > 0) {
+            len /= 10;
+            j++;
+        }
+        for (int i = 0; i < model.size(); i++) {
+            if (i == 10) {
+                j--;
+            }
+            if (i == 100) {
+                j--;
+            }
+            if (i == 1000) {
+                j--;
+            }
+            String nb0 = "";
+            for (int x = j; x > 0; x--) {
+                nb0 += "0";
+            }
+            String name = model.get(i);
+            int pos = name.lastIndexOf('.');
+            String extention = name.substring(pos);
+            String imgName = nb0 + i + extention;
+            File originFile = new File(folder, name);
+            File newFile = new File(folder, imgName);
+            originFile.renameTo(newFile);
+        }
+        jLabelRenameNbImage1.setText("Nombres d'images: " + model.getSize() + "/" + model.getSize());
+    }//GEN-LAST:event_jButtonConvertirRenameActionPerformed
 
     private void jListRenameListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListRenameListKeyPressed
         if (!resetList || jListRenameList.getModel().getSize() <= 0) {
@@ -1200,78 +1085,103 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jListRenameListKeyPressed
 
-    private void jButtonRenamePgUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgUpActionPerformed
-        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_PAGE_UP, 'u');
-        jListRenameListKeyPressed(ke);
-    }//GEN-LAST:event_jButtonRenamePgUpActionPerformed
-
-    private void jButtonRenamePgDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgDownActionPerformed
-        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_PAGE_DOWN, 'd');
-        jListRenameListKeyPressed(ke);
-    }//GEN-LAST:event_jButtonRenamePgDownActionPerformed
-
-    private void jButtonConvertirRenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirRenameActionPerformed
-        DefaultListModel<String> model = (DefaultListModel<String>) jListRenameList.getModel();
-        if (model == null || model.size() <= 0) {
-            return;
-        }
-        int len = model.size();
-        int j = -1;
-        while (len > 0) {
-            len /= 10;
-            j++;
-        }
-        for (int i = 0; i < model.size(); i++) {
-            if (i == 10) {
-                j--;
-            }
-            if (i == 100) {
-                j--;
-            }
-            if (i == 1000) {
-                j--;
-            }
-            String nb0 = "";
-            for (int x = j; x > 0; x--) {
-                nb0 += "0";
-            }
-            String name = model.get(i);
-            int pos = name.lastIndexOf('.');
-            String extention = name.substring(pos);
-            String imgName = nb0 + i + extention;
-            File originFile = new File(folder, name);
-            File newFile = new File(folder, imgName);
-            originFile.renameTo(newFile);
-        }
-        jLabelRenameNbImage1.setText("Nombres d'images: " + model.getSize() + "/" + model.getSize());
-    }//GEN-LAST:event_jButtonConvertirRenameActionPerformed
-
-    private void jButtonCropListerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropListerActionPerformed
-        File files[] = getFiles(folder, null);
-        DefaultListModel<String> model = new DefaultListModel<>();
+    private void jButtonConvertirResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirResizeActionPerformed
+        File files[] = getFiles(folder, ".jpg");
+        new File(folder, "resize").mkdirs();
+        int i = 0;
         for (File file : files) {
-            model.addElement(file.getName());
+            try {
+                i++;
+                magick.launchResize(file, jTextFieldResizeText.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        jListCropAGarder.setModel(model);
-        jListCropAExclure.setModel(new DefaultListModel<>());
-        if (model.size() > 0) {
-            jButtonConvertCrop.setEnabled(true);
-        }
+        jLabel1ConvertNbImage.setText("Nombres d'images: " + i + "/" + files.length);
+    }//GEN-LAST:event_jButtonConvertirResizeActionPerformed
 
-    }//GEN-LAST:event_jButtonCropListerActionPerformed
+    private void jLabelResizenfoURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelResizenfoURL1MouseClicked
+        String url = "https://imagemagick.org/script/command-line-processing.php#geometry";
+        openURL(url);
+    }//GEN-LAST:event_jLabelResizenfoURL1MouseClicked
 
-    private void jButtonCropToExcludeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropToExcludeActionPerformed
-        DefaultListModel<String> modelGarde = (DefaultListModel<String>) jListCropAGarder.getModel();
-        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListCropAExclure.getModel();
-        int indices[] = jListCropAGarder.getSelectedIndices();
-        for (int i = 0; i < indices.length; i++) {
-            String value = modelGarde.get(indices[i]);
-            modelExclude.addElement(value);
+    private void jButtonConvertireConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertireConvertActionPerformed
+        if (!jTextFieldConvertExt.getText().startsWith(".")) {
+            jTextFieldConvertExt.setText("." + jTextFieldConvertExt.getText().trim());
         }
-        for (int i = (indices.length - 1); i > -1; i--) {
-            modelGarde.removeElementAt(indices[i]);
+        File files[] = getFiles(folder, jTextFieldConvertExt.getText());
+        new File(folder, "convert").mkdirs();
+        int i = 0;
+        for (File file : files) {
+            try {
+                i++;
+                magick.launchConvertInm(file, ".jpg");
+            } catch (Exception ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-    }//GEN-LAST:event_jButtonCropToExcludeActionPerformed
+        jLabelConvertNbImg.setText("Nombres d'images: " + i + "/" + files.length);
+    }//GEN-LAST:event_jButtonConvertireConvertActionPerformed
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        JOptionPane.showMessageDialog(this, "La sortie serra toujours en .jpg");
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jButtonConvertirRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirRotateActionPerformed
+        new File(folder, "rotate").mkdirs();
+        File files[] = getFiles(folder, ".jpg");
+        int i = 0;
+        for (File file : files) {
+            i++;
+            try {
+                magick.laumchRotateMagik(file, jTextFieldRotate.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        jLabel1RotateNbImg.setText("Nombres d'images: " + i + "/" + files.length);
+    }//GEN-LAST:event_jButtonConvertirRotateActionPerformed
+
+    private void jLabelRotateURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRotateURL1MouseClicked
+        JOptionPane.showMessageDialog(this, "Mettre (en degrés) la rotation.\nPeux etre négatif\n\nExemple: 90 ou -90");
+    }//GEN-LAST:event_jLabelRotateURL1MouseClicked
+
+    private void jLabelImg2StendardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2StendardMouseClicked
+        JOptionPane.showMessageDialog(this, "Si l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final");
+    }//GEN-LAST:event_jLabelImg2StendardMouseClicked
+
+    private void jLabelImg2PdfOriginalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2PdfOriginalMouseClicked
+        JOptionPane.showMessageDialog(this, "Mets la taille original des images dans le PDF (faites un resize avant !)\nPratique quand les formats ne sont pas standards\nSi l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final");
+    }//GEN-LAST:event_jLabelImg2PdfOriginalMouseClicked
+
+    private void jLabelImg2PdfBDBelgeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImg2PdfBDBelgeMouseClicked
+        JOptionPane.showMessageDialog(this, "la taille proposé de base (936x1248) c'est la taille 24cmx32cm soit le format d'une BD (belge)\nCela permet de forcer une taille si l'on ne veux pas de la taille original\nSi l'un des nom d'une image contient \"paysage\" (exemple: 01-paysage.jpg) elle serra au format paysage dans le rendu du PDF final", "Info", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jLabelImg2PdfBDBelgeMouseClicked
+
+    private void jButtonConvertImg2PdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertImg2PdfActionPerformed
+        File files[] = getFiles(folder, ".jpg");
+        PageSize pg = null;
+        try {
+            if (jRadioButtonOriginal.isSelected()) {
+                Image image = new Image(ImageDataFactory.create(files[0].getAbsolutePath()));
+                pg = new PageSize(image.getImageWidth() / 4, image.getImageHeight() / 4);
+            } else if (jRadioButtonStendard.isSelected()) {
+                String resStr = jComboBoxImg2PdfPageSize.getSelectedItem().toString();
+                Field f = PageSize.class.getField(resStr);
+                pg = (PageSize) f.get(null);
+            } else {
+                pg = new PageSize(Float.parseFloat(jFormattedTextFieldImg2PdfWidth.getText()), Float.parseFloat(jFormattedTextFieldImg2PdfHeight.getText()));
+            }
+            magick.launchImg2Pdf(files, pg);
+            jLabelImg2PDFNbImg1.setText("Nombres d'images: " + files.length);
+        } catch (Exception ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonConvertImg2PdfActionPerformed
+
+    private void jLabelCropInfosListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropInfosListMouseClicked
+        JOptionPane.showMessageDialog(this, "Maintenir shift pour selectionner plusieurs lignes");
+    }//GEN-LAST:event_jLabelCropInfosListMouseClicked
 
     private void jButtonCropToIncludeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropToIncludeActionPerformed
         DefaultListModel<String> modelGarde = (DefaultListModel<String>) jListCropAGarder.getModel();
@@ -1286,9 +1196,113 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonCropToIncludeActionPerformed
 
-    private void jLabelCropInfosListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropInfosListMouseClicked
-        JOptionPane.showMessageDialog(this, "Maintenir shift pour selectionner plusieurs lignes");
-    }//GEN-LAST:event_jLabelCropInfosListMouseClicked
+    private void jButtonCropToExcludeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropToExcludeActionPerformed
+        DefaultListModel<String> modelGarde = (DefaultListModel<String>) jListCropAGarder.getModel();
+        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListCropAExclure.getModel();
+        int indices[] = jListCropAGarder.getSelectedIndices();
+        for (int i = 0; i < indices.length; i++) {
+            String value = modelGarde.get(indices[i]);
+            modelExclude.addElement(value);
+        }
+        for (int i = (indices.length - 1); i > -1; i--) {
+            modelGarde.removeElementAt(indices[i]);
+        }
+    }//GEN-LAST:event_jButtonCropToExcludeActionPerformed
+
+    private void jButtonCropListerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCropListerActionPerformed
+        File files[] = getFiles(folder, null);
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (File file : files) {
+            model.addElement(file.getName());
+        }
+        jListCropAGarder.setModel(model);
+        jListCropAExclure.setModel(new DefaultListModel<>());
+        if (model.size() > 0) {
+            jButtonConvertCrop.setEnabled(true);
+        }
+    }//GEN-LAST:event_jButtonCropListerActionPerformed
+
+    private void jLabelCropInfosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropInfosMouseClicked
+        JOptionPane.showMessageDialog(this, "En Mode Auto, ca coupe au milieu de l'image.\nSinon il faut mettre une largeure x hauteur (voir \"info sur le templates (geometry) \")\nIl vaut mieux laisser en Auto !", "Info", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jLabelCropInfosMouseClicked
+
+    private void jLabelCropinfoGeometryURLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropinfoGeometryURLMouseClicked
+        String url = "https://imagemagick.org/script/command-line-processing.php#geometry";
+        openURL(url);
+    }//GEN-LAST:event_jLabelCropinfoGeometryURLMouseClicked
+
+    private void jButtonConvertCropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertCropActionPerformed
+        new File(folder, "crop").mkdirs();
+        DefaultListModel<String> model = (DefaultListModel<String>) jListCropAGarder.getModel();
+        boolean auto1 = jTextFieldCrop1.getText().contains("Auto");
+        boolean auto2 = jTextFieldCrop2.getText().contains("Auto");
+        String crop1 = "";
+        String crop2 = "";
+        Iterator<String> it = model.elements().asIterator();
+        int i = 0;
+        while (it.hasNext()) {
+            File file = new File(folder, it.next());
+            try {
+                BufferedImage img = ImageIO.read(file);
+
+                int h = img.getHeight();
+                int w = img.getWidth();
+                if (auto1) {
+                    crop1 = w / 2 + "x" + h + "-0-0";
+                } else {
+                    crop1 = jTextFieldCrop1.getText();
+                }
+                if (auto2) {
+                    crop2 = w / 2 + "x" + h + "+" + w / 2 + "-0";
+                } else {
+                    crop2 = jTextFieldCrop2.getText();
+                }
+
+                magick.laumchCropMagik(file, crop1, 1);
+                magick.laumchCropMagik(file, crop2, 2);
+
+                i += 2;
+                jLabelCropNbImg.setText("Nombres d'images: " + i + "/" + (model.size() * 2));
+            } catch (Exception ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListCropAExclure.getModel();
+        Iterator<String> itE = modelExclude.elements().asIterator();
+        while (itE.hasNext()) {
+            String fn = itE.next();
+            File file = new File(folder, fn);
+            File newFile = new File(folder, "crop/"+fn);
+            try {
+                FileUtils.copyFile(file, newFile);
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }//GEN-LAST:event_jButtonConvertCropActionPerformed
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        JOptionPane.showMessageDialog(this, "Plus la densité est grande plus la taille du fichier serra grand et lourd.\n\n300 est un tres bon compromis entre qualité / poids / taille", "Info", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jButtonConvertPdf2ImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertPdf2ImgActionPerformed
+        File pdfs[] = getFiles(folder, ".pdf");
+        if (pdfs.length == 0) {
+            JOptionPane.showMessageDialog(this, "Pas de pdf trouver dans le repertoire choisi", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        File pdf = pdfs[0];
+
+        try {
+            magick.launchPdf2Img(pdf, jFormattedTextFieldPdf2Img.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        moveFileToFolder(pdf, "originals");
+        File jpgs[] = getFiles(folder, ".jpg");
+        jLabelPdf2imgNbImg.setText("Nombres d'images: " + jpgs.length);
+    }//GEN-LAST:event_jButtonConvertPdf2ImgActionPerformed
 
     private boolean resetList = false;
 
@@ -1366,6 +1380,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRenameReset;
     private javax.swing.JButton jButtonRenameSuppr;
     private javax.swing.JButton jButtonRenameUp;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBoxImg2PdfPageSize;
     private javax.swing.JFormattedTextField jFormattedTextFieldImg2PdfHeight;
     private javax.swing.JFormattedTextField jFormattedTextFieldImg2PdfWidth;
