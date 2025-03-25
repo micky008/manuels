@@ -25,6 +25,8 @@ import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
 import com.itextpdf.layout.element.Image;
 import java.awt.event.KeyEvent;
+import java.nio.file.CopyOption;
+import java.nio.file.StandardCopyOption;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
@@ -60,14 +62,14 @@ public class NewJFrame extends javax.swing.JFrame {
                 config = new Config();
                 String res = gson.toJson(config);
                 FileUtils.write(CONFIG_FILE, res, "UTF-8");
-                JOptionPane.showMessageDialog(this, "Attention il faut remplir le fichie de config (config.json)", "Erreur", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Attention il faut remplir le fichie de config (config.json)\nLa partie magck", "Erreur", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
                 return;
             }
             String jsonconfig = FileUtils.readFileToString(CONFIG_FILE, "UTF-8");
             config = gson.fromJson(jsonconfig, Config.class);
             if (config.magickCommande.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Attention il faut remplir le fichie de config (config.json)", "Erreur", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Attention il faut remplir le fichie de config (config.json)\nLa partie magck", "Erreur", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
         } catch (IOException ex) {
@@ -179,6 +181,12 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1ConvertNbImage = new javax.swing.JLabel();
         jCheckBoxResize = new javax.swing.JCheckBox();
         jLabelResizenfoURL2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jListResize = new javax.swing.JList<>();
+        jButtonResizeLister1 = new javax.swing.JButton();
+        jLabelResizeInfos = new javax.swing.JLabel();
+        jCheckBoxResizeAllSelect = new javax.swing.JCheckBox();
         jPanelConvert = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jTextFieldConvertExt = new javax.swing.JTextField();
@@ -223,7 +231,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 153, 255));
         jLabel6.setText("Infos");
         jLabel6.setToolTipText("");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -247,7 +255,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(81, 81, 81))
                     .addGroup(jPanelPdf2ImagLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
                         .addComponent(jButtonConvertPdf2Img)))
                 .addContainerGap())
             .addGroup(jPanelPdf2ImagLayout.createSequentialGroup()
@@ -316,7 +324,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 153, 255));
         jLabel10.setText("Infos");
         jLabel10.setToolTipText("On peux appyer sur les fleches haut/bas pour monter/decendre un fichier\\n\nOn peux appuyer sur Page up/pagedown pour aller de 10 en 10\\n\nOn peux appyer sur suppr pour supprimer une ligne\n");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -376,7 +384,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanelRenameLayout.createSequentialGroup()
                         .addComponent(jButtonRenamePgDown)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                         .addComponent(jLabelRenameNbImage1)
                         .addGap(82, 82, 82))))
         );
@@ -429,7 +437,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelCropinfoGeometryURL.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropinfoGeometryURL.setText("Infos");
-        jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelCropinfoGeometryURL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCropinfoGeometryURLMouseClicked(evt);
@@ -438,7 +446,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelCropInfos.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropInfos.setText("Infos");
-        jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelCropInfos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCropInfosMouseClicked(evt);
@@ -476,7 +484,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelCropInfosList.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropInfosList.setText("Infos");
-        jLabelCropInfosList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCropInfosList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelCropInfosList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCropInfosListMouseClicked(evt);
@@ -519,7 +527,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addGap(0, 57, Short.MAX_VALUE)
+                        .addGap(0, 113, Short.MAX_VALUE)
                         .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonConvertCrop, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
@@ -533,7 +541,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
-                    .addContainerGap(610, Short.MAX_VALUE)
+                    .addContainerGap(693, Short.MAX_VALUE)
                     .addComponent(jLabelNbImageCrop, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(8, 8, 8)))
         );
@@ -598,7 +606,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2PdfBDBelge.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2PdfBDBelge.setText("Infos");
-        jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelImg2PdfBDBelge.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2PdfBDBelgeMouseClicked(evt);
@@ -618,7 +626,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2PdfOriginal.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2PdfOriginal.setText("Infos");
-        jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelImg2PdfOriginal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2PdfOriginalMouseClicked(evt);
@@ -627,7 +635,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2Stendard.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2Stendard.setText("Infos");
-        jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelImg2Stendard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2StendardMouseClicked(evt);
@@ -676,7 +684,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jLabelImg2PdfOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelImg2PdfBDBelge, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelImg2Stendard, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(229, Short.MAX_VALUE))))
+                        .addContainerGap(297, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelImg2PDFNbImg1)
@@ -686,10 +694,11 @@ public class NewJFrame extends javax.swing.JFrame {
             jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxImg2PdfPageSize, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelImg2Stendard)
-                    .addComponent(jRadioButtonStendard))
+                .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonStendard, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBoxImg2PdfPageSize, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelImg2Stendard)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelimg2PdfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelImg2PdfOriginal)
@@ -716,7 +725,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelResizenfoURL1.setForeground(new java.awt.Color(0, 153, 255));
         jLabelResizenfoURL1.setText("Infos1");
-        jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelResizenfoURL1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelResizenfoURL1MouseClicked(evt);
@@ -724,6 +733,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jButtonConvertirResize.setText("Convertir");
+        jButtonConvertirResize.setEnabled(false);
         jButtonConvertirResize.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConvertirResizeActionPerformed(evt);
@@ -736,10 +746,39 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelResizenfoURL2.setForeground(new java.awt.Color(0, 153, 255));
         jLabelResizenfoURL2.setText("Infos2");
-        jLabelResizenfoURL2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelResizenfoURL2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelResizenfoURL2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelResizenfoURL2MouseClicked(evt);
+            }
+        });
+
+        jLabel9.setText("A convertir");
+
+        jListRotate.setModel(new DefaultListModel<String>());
+        jScrollPane5.setViewportView(jListResize);
+
+        jButtonResizeLister1.setText("Lister");
+        jButtonResizeLister1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResizeLister1ActionPerformed(evt);
+            }
+        });
+
+        jLabelResizeInfos.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelResizeInfos.setText("Infos");
+        jLabelResizeInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelResizeInfos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelResizeInfosMouseClicked(evt);
+            }
+        });
+
+        jCheckBoxResizeAllSelect.setText("Tout sélectionner");
+        jCheckBoxResizeAllSelect.setEnabled(false);
+        jCheckBoxResizeAllSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxResizeAllSelectActionPerformed(evt);
             }
         });
 
@@ -750,18 +789,6 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(jPanelResizeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
-                                .addComponent(jButtonConvertirResize)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
-                                .addComponent(jLabel1ConvertNbImage)
-                                .addGap(85, 85, 85))))
-                    .addGroup(jPanelResizeLayout.createSequentialGroup()
-                        .addComponent(jCheckBoxResize)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelResizeLayout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
@@ -770,7 +797,30 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelResizenfoURL2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelResizenfoURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(246, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelResizeLayout.createSequentialGroup()
+                        .addComponent(jCheckBoxResize)
+                        .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelResizeLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonResizeLister1)
+                                    .addComponent(jLabelResizeInfos)
+                                    .addComponent(jCheckBoxResizeAllSelect))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
+                                        .addComponent(jButtonConvertirResize)
+                                        .addContainerGap())
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResizeLayout.createSequentialGroup()
+                                        .addComponent(jLabel1ConvertNbImage)
+                                        .addGap(85, 85, 85))))
+                            .addGroup(jPanelResizeLayout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel9)
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         jPanelResizeLayout.setVerticalGroup(
             jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -782,13 +832,28 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabelResizenfoURL1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelResizenfoURL2)
-                .addGap(7, 7, 7)
-                .addComponent(jCheckBoxResize)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addComponent(jLabel1ConvertNbImage)
-                .addGap(11, 11, 11)
-                .addComponent(jButtonConvertirResize)
-                .addContainerGap())
+                .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelResizeLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jCheckBoxResize)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1ConvertNbImage)
+                        .addGap(11, 11, 11)
+                        .addComponent(jButtonConvertirResize)
+                        .addContainerGap())
+                    .addGroup(jPanelResizeLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelResizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelResizeLayout.createSequentialGroup()
+                                .addComponent(jButtonResizeLister1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelResizeInfos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBoxResizeAllSelect)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jTabbedPane2.addTab("Resize", jPanelResize);
@@ -800,7 +865,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 153, 255));
         jLabel14.setText("Infos");
         jLabel14.setToolTipText("");
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
@@ -829,7 +894,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(jLabel14)
-                        .addContainerGap(336, Short.MAX_VALUE))
+                        .addContainerGap(385, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -864,7 +929,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelRotateURL1.setForeground(new java.awt.Color(0, 153, 255));
         jLabelRotateURL1.setText("Infos");
         jLabelRotateURL1.setToolTipText("");
-        jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelRotateURL1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRotateURL1MouseClicked(evt);
@@ -897,7 +962,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelRotateInfos.setForeground(new java.awt.Color(0, 153, 255));
         jLabelRotateInfos.setText("Infos");
-        jLabelRotateInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelRotateInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelRotateInfos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRotateInfosMouseClicked(evt);
@@ -926,33 +991,30 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jCheckBoxRotate))
                 .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRotateLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 320, Short.MAX_VALUE))
+                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelRotateLayout.createSequentialGroup()
-                                .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 309, Short.MAX_VALUE))
                             .addGroup(jPanelRotateLayout.createSequentialGroup()
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelRotateLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButtonConvertirRotate, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
-                                                .addComponent(jLabel1RotateNbImg)
-                                                .addGap(78, 78, 78))))
-                                    .addGroup(jPanelRotateLayout.createSequentialGroup()
-                                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButtonRotateLister)
-                                            .addComponent(jLabelRotateInfos)
-                                            .addComponent(jCheckBoxRotateAllSelect))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addContainerGap())
-                    .addGroup(jPanelRotateLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jButtonRotateLister)
+                                    .addComponent(jLabelRotateInfos)
+                                    .addComponent(jCheckBoxRotateAllSelect)))
+                            .addGroup(jPanelRotateLayout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonConvertirRotate, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
+                                .addComponent(jLabel1RotateNbImg)
+                                .addGap(78, 78, 78)))))
+                .addContainerGap())
         );
         jPanelRotateLayout.setVerticalGroup(
             jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -962,28 +1024,26 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelRotateURL1))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRotateLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jCheckBoxRotate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
-                            .addComponent(jLabel1RotateNbImg)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonConvertirRotate))
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelRotateLayout.createSequentialGroup()
-                        .addComponent(jButtonRotateLister)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelRotateInfos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addComponent(jLabel1RotateNbImg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBoxRotateAllSelect)))
+                        .addComponent(jButtonConvertirRotate))
+                    .addGroup(jPanelRotateLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelRotateLayout.createSequentialGroup()
+                                .addComponent(jButtonRotateLister)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelRotateInfos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBoxRotateAllSelect)))))
                 .addContainerGap())
         );
 
@@ -1172,15 +1232,15 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jListRenameListKeyPressed
 
     private void jButtonConvertirResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertirResizeActionPerformed
-        File files[] = getFiles(folder, ".jpg");
         File resizeFolder = new File(folder, "resize");
         resizeFolder.mkdirs();
-        int i = 0;
-        for (File file : files) {
+        int indices[] = jListResize.getSelectedIndices();
+        for (int i = 0; i < indices.length; i++) {
+            File file = new File(folder, jListResize.getModel().getElementAt(indices[i]));
             try {
-                i++;
                 File result = magick.launchResize(file, jTextFieldResizeText.getText());
                 if (jCheckBoxResize.isSelected()) {
+                    FileUtils.delete(file);
                     FileUtils.moveFile(result, file);
                 }
             } catch (Exception ex) {
@@ -1194,7 +1254,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        jLabel1ConvertNbImage.setText("Nombres d'images: " + i + "/" + files.length);
+        jLabel1ConvertNbImage.setText("Nombres d'images: " + indices.length + "/" + indices.length);
     }//GEN-LAST:event_jButtonConvertirResizeActionPerformed
 
     private void jLabelResizenfoURL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelResizenfoURL1MouseClicked
@@ -1230,7 +1290,6 @@ public class NewJFrame extends javax.swing.JFrame {
         int indices[] = jListRotate.getSelectedIndices();
         for (int i = 0; i < indices.length; i++) {
             File file = new File(folder, jListRotate.getModel().getElementAt(indices[i]));
-            i++;
             String result = null;
             try {
                 result = magick.laumchRotateMagik(file, jTextFieldRotate.getText());
@@ -1240,6 +1299,7 @@ public class NewJFrame extends javax.swing.JFrame {
             if (jCheckBoxRotate.isSelected() && result != null) {
                 File f = new File(result);
                 try {
+                    FileUtils.delete(file);
                     FileUtils.moveFile(f, file);
                 } catch (IOException ex) {
                     Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -1451,6 +1511,35 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonRotateListerActionPerformed
 
+    private void jButtonResizeLister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResizeLister1ActionPerformed
+        File files[] = getFiles(folder, null);
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (File file : files) {
+            model.addElement(file.getName());
+        }
+        jListResize.setModel(model);
+        if (model.size() > 0) {
+            jButtonConvertirResize.setEnabled(true);
+            jCheckBoxResizeAllSelect.setEnabled(true);
+        }
+    }//GEN-LAST:event_jButtonResizeLister1ActionPerformed
+
+    private void jLabelResizeInfosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelResizeInfosMouseClicked
+        this.jLabelRotateInfosMouseClicked(evt);
+    }//GEN-LAST:event_jLabelResizeInfosMouseClicked
+
+    private void jCheckBoxResizeAllSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxResizeAllSelectActionPerformed
+         if (jListResize.getModel().getSize() <= 0) {
+            return;
+        }
+        int selctions[] = new int[jListResize.getModel().getSize()];
+        for (int i = 0; i < selctions.length; i++) {
+            selctions[i] = i;
+        }
+        jListResize.setSelectedIndices(selctions);
+        jListResize.setEnabled(!jCheckBoxResizeAllSelect.isSelected());
+    }//GEN-LAST:event_jCheckBoxResizeAllSelectActionPerformed
+
     private boolean resetList = false;
 
     private void openURL(String url) {
@@ -1527,8 +1616,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRenameReset;
     private javax.swing.JButton jButtonRenameSuppr;
     private javax.swing.JButton jButtonRenameUp;
+    private javax.swing.JButton jButtonResizeLister1;
     private javax.swing.JButton jButtonRotateLister;
     private javax.swing.JCheckBox jCheckBoxResize;
+    private javax.swing.JCheckBox jCheckBoxResizeAllSelect;
     private javax.swing.JCheckBox jCheckBoxRotate;
     private javax.swing.JCheckBox jCheckBoxRotateAllSelect;
     private javax.swing.JComboBox<String> jComboBoxImg2PdfPageSize;
@@ -1551,6 +1642,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelConvertNbImg;
     private javax.swing.JLabel jLabelCropInfos;
     private javax.swing.JLabel jLabelCropInfosList;
@@ -1564,6 +1656,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNbImageCrop;
     private javax.swing.JLabel jLabelPdf2imgNbImg;
     private javax.swing.JLabel jLabelRenameNbImage1;
+    private javax.swing.JLabel jLabelResizeInfos;
     private javax.swing.JLabel jLabelResizenfoURL1;
     private javax.swing.JLabel jLabelResizenfoURL2;
     private javax.swing.JLabel jLabelRotateInfos;
@@ -1571,6 +1664,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JList<String> jListCropAExclure;
     private javax.swing.JList<String> jListCropAGarder;
     private javax.swing.JList<String> jListRenameList;
+    private javax.swing.JList<String> jListResize;
     private javax.swing.JList<String> jListRotate;
     private javax.swing.JPanel jPanelConvert;
     private javax.swing.JPanel jPanelCrop;
@@ -1586,6 +1680,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextFieldConvertExt;
     private javax.swing.JTextField jTextFieldCrop1;
