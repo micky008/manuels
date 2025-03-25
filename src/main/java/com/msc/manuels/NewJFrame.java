@@ -294,6 +294,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jListRenameList);
 
         jButtonConvertirRename.setText("Convertir");
+        jButtonConvertirRename.setEnabled(false);
         jButtonConvertirRename.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConvertirRenameActionPerformed(evt);
@@ -1119,7 +1120,10 @@ public class NewJFrame extends javax.swing.JFrame {
             model.addElement(file.getName());
         }
         jListRenameList.setModel(model);
-        resetList = true;
+        if (model.size() > 0) {
+            resetList = true;
+            jButtonConvertirRename.setEnabled(true);
+        }
     }//GEN-LAST:event_jButtonRenameResetActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
@@ -1529,7 +1533,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelResizeInfosMouseClicked
 
     private void jCheckBoxResizeAllSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxResizeAllSelectActionPerformed
-         if (jListResize.getModel().getSize() <= 0) {
+        if (jListResize.getModel().getSize() <= 0) {
             return;
         }
         int selctions[] = new int[jListResize.getModel().getSize()];
