@@ -12,11 +12,15 @@ Cet UI permet de faire 6 actions distinct.
 ## Pre-requis
 
 - une JRE v8 minumum 
-- imagemagick 7 (prenez la version portable) [liens ici](https://imagemagick.org/script/download.php)
-- ghostscript [liens ici](https://ghostscript.com/releases/gsdnld.html)
+- imagemagick 7 (prenez la version portable) [lien ici](https://imagemagick.org/script/download.php)
+- ghostscript [lien ici](https://ghostscript.com/releases/gsdnld.html)
 
 Pour imagemagick installer le fichier portable dasn un répértoire quelqu'onque et recuprer le chemain que vous aller mettre dans config.json (fichier créé a la 1ere éxecution du programme)
 
+Il faut lancer le programme via la ligne de comamnde : java -jar manuels-X.X.X.jar
+
+X = numero de version
+exemple: 1.2.0 => manuels-1.2.0.jar
 
 ## Démmarage
 
