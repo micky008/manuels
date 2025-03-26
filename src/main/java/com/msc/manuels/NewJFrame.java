@@ -1104,12 +1104,12 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOpenFolderActionPerformed
 
     private void jButtonRenamePgDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgDownActionPerformed
-        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_PAGE_DOWN, 'd');
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, -1, 0, 0, KeyEvent.VK_PAGE_DOWN, 'd');
         jListRenameListKeyPressed(ke);
     }//GEN-LAST:event_jButtonRenamePgDownActionPerformed
 
     private void jButtonRenamePgUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgUpActionPerformed
-        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_PAGE_UP, 'u');
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, -1, 0, 0, KeyEvent.VK_PAGE_UP, 'u');
         jListRenameListKeyPressed(ke);
     }//GEN-LAST:event_jButtonRenamePgUpActionPerformed
 
@@ -1136,12 +1136,12 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRenameSupprActionPerformed
 
     private void jButtonRenameDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameDownActionPerformed
-        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_DOWN, 'd');
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, -1, 0, 0, KeyEvent.VK_DOWN, 'd');
         jListRenameListKeyPressed(ke);
     }//GEN-LAST:event_jButtonRenameDownActionPerformed
 
     private void jButtonRenameUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameUpActionPerformed
-        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, 0, 0, 0, KeyEvent.VK_UP, 'u');
+        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, -1, 0, 0, KeyEvent.VK_UP, 'u');
         jListRenameListKeyPressed(ke);
     }//GEN-LAST:event_jButtonRenameUpActionPerformed
 
@@ -1193,7 +1193,9 @@ public class NewJFrame extends javax.swing.JFrame {
             String tmp = model.getElementAt(jListRenameList.getSelectedIndex() - 1);
             model.setElementAt(jListRenameList.getSelectedValue(), jListRenameList.getSelectedIndex() - 1);
             model.setElementAt(tmp, jListRenameList.getSelectedIndex());
-            jListRenameList.setSelectedIndex(jListRenameList.getSelectedIndex() - 1);
+            if (evt.getID() == -1) {
+                jListRenameList.setSelectedIndex(jListRenameList.getSelectedIndex()-1);
+            }
         }
         if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
             if (jListRenameList.getSelectedIndex() == (model.getSize() - 1)) {
@@ -1202,25 +1204,37 @@ public class NewJFrame extends javax.swing.JFrame {
             String tmp = model.getElementAt(jListRenameList.getSelectedIndex() + 1);
             model.setElementAt(jListRenameList.getSelectedValue(), jListRenameList.getSelectedIndex() + 1);
             model.setElementAt(tmp, jListRenameList.getSelectedIndex());
-            jListRenameList.setSelectedIndex(jListRenameList.getSelectedIndex() + 1);
+            if (evt.getID() == -1) {
+                jListRenameList.setSelectedIndex(jListRenameList.getSelectedIndex()+1);
+            }
         }
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
             int minPlace = 0;
-            if (jListRenameList.getSelectedIndex() - 10 >= 0) {
-                minPlace = jListRenameList.getSelectedIndex() - 10;
+            if (jListRenameList.getSelectedIndex() - 14 >= 0) {
+                minPlace = jListRenameList.getSelectedIndex() - 14;
             }
+            int tmp = jListRenameList.getSelectedIndex();
             model.add(minPlace, jListRenameList.getSelectedValue());
-            model.remove(jListRenameList.getSelectedIndex());
-            jListRenameList.setSelectedIndex(minPlace);
+            model.remove(tmp + 1);
+            jListRenameList.ensureIndexIsVisible(minPlace);
+            if (evt.getID() == -1) {
+                jListRenameList.setSelectedIndex(minPlace);
+            }
         }
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
-            int maxPlace = model.getSize() - 1;
-            if (jListRenameList.getSelectedIndex() + 10 <= maxPlace) {
-                maxPlace = jListRenameList.getSelectedIndex() + 10;
+            int maxPlace = model.getSize();
+            if (jListRenameList.getSelectedIndex() + 14 <= maxPlace) {
+                maxPlace = jListRenameList.getSelectedIndex() + 14;
             }
-            model.add(maxPlace, jListRenameList.getSelectedValue());
-            model.remove(jListRenameList.getSelectedIndex());
-            jListRenameList.setSelectedIndex(maxPlace);
+            int tmpSrcInt = jListRenameList.getSelectedIndex();
+            String tmpSrc = model.elementAt(tmpSrcInt);
+            String tmpDest = model.elementAt(maxPlace == model.getSize() ? maxPlace - 1 : maxPlace);
+            model.add(maxPlace, tmpSrc);
+            model.remove(tmpSrcInt);
+            jListRenameList.ensureIndexIsVisible(maxPlace - 1);
+            if (evt.getID() == -1) {
+                jListRenameList.setSelectedIndex(maxPlace - 1);
+            }
         }
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if ((model.getSize() - 1) <= 0) {
@@ -1410,7 +1424,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelCropinfoGeometryURLMouseClicked
 
     private void jButtonConvertCropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertCropActionPerformed
-        new File(folder, "crop").mkdirs();
+        new File(folder, "originals").mkdirs();
         DefaultListModel<String> model = (DefaultListModel<String>) jListCropAGarder.getModel();
         boolean auto1 = jTextFieldCrop1.getText().contains("Auto");
         boolean auto2 = jTextFieldCrop2.getText().contains("Auto");
@@ -1439,25 +1453,15 @@ public class NewJFrame extends javax.swing.JFrame {
                 magick.laumchCropMagik(file, crop1, 1);
                 magick.laumchCropMagik(file, crop2, 2);
 
+                String filename = file.getParentFile().getAbsolutePath() + "/originals/" + file.getName();
+                FileUtils.moveFile(file, new File(filename));
+
                 i += 2;
                 jLabelCropNbImg.setText("Nombres d'images: " + i + "/" + (model.size() * 2));
             } catch (Exception ex) {
                 Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListCropAExclure.getModel();
-        Iterator<String> itE = modelExclude.elements().asIterator();
-        while (itE.hasNext()) {
-            String fn = itE.next();
-            File file = new File(folder, fn);
-            File newFile = new File(folder, "crop/" + fn);
-            try {
-                FileUtils.copyFile(file, newFile);
-            } catch (IOException ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
     }//GEN-LAST:event_jButtonConvertCropActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked

@@ -157,7 +157,7 @@
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -322,7 +322,7 @@
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="toolTipText" type="java.lang.String" value="On peux appyer sur les fleches haut/bas pour monter/decendre un fichier\u005cn&#xa;On peux appuyer sur Page up/pagedown pour aller de 10 en 10\u005cn&#xa;On peux appyer sur suppr pour supprimer une ligne&#xa;" containsInvalidXMLChars="true"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -550,7 +550,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -564,7 +564,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -650,7 +650,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -778,7 +778,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -821,7 +821,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -835,7 +835,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -986,7 +986,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos1"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -1019,7 +1019,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos2"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -1066,7 +1066,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -1161,7 +1161,7 @@
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -1226,10 +1226,9 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="195" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="92" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButtonConvertirRotate" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
@@ -1301,7 +1300,7 @@
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -1367,7 +1366,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Infos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Curseur par d&#xe9;faut"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>

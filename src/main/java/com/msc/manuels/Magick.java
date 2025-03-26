@@ -74,7 +74,7 @@ public class Magick {
         int pos = file.getName().lastIndexOf('.');
         String fileNoExt = file.getName().substring(0, pos);
 
-        String filename = file.getParentFile().getAbsolutePath() + "/crop/" + fileNoExt + "-" + i + ".jpg";
+        String filename = file.getParentFile().getAbsolutePath() + "/" + fileNoExt + "-" + i + ".jpg";
 
         String args[] = {CONFIG.magickCommande, file.getAbsolutePath(), "-crop", crop, filename};
         launchMagick(args);
