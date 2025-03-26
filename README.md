@@ -11,7 +11,7 @@ Cet UI permet de faire 6 actions distinct.
 
 ## Pre-requis
 
-- une JRE v17 minumum
+- une JRE v8 minumum 
 - imagemagick 7 (prenez la version portable) [liens ici](https://imagemagick.org/script/download.php)
 - ghostscript [liens ici](https://ghostscript.com/releases/gsdnld.html)
 
@@ -77,7 +77,8 @@ les images que vous ne voulez pas crop mettez les dans la liste "A exclure"
 
 Puis sur convertir. 
 
-Cela créera un repertoire a la racine de celui choisi au tout debut nommer "crop" qui contiendra le resultat. Et les fichiers qui sont exclus se mettent quand meme dans le reprtoire de sortie crop mais entieres.
+Cela créera un repertoire a la racine de celui choisi au tout debut nommer "originals" qui contiendra les images qui sont a rogner, autrement dit les images d'origines vont dans le repertoire originals.  
+Les exclus ne bougent pas, et les nouvelles images sont dans le repertoire d'origine.
 
 ## Img 2 PDF
 
