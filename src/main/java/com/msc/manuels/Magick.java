@@ -98,7 +98,7 @@ public class Magick {
         int pos = file.getName().lastIndexOf('.');
         String fileNoExt = file.getName().substring(0, pos);
 
-        File newFIle = new File(file.getParent(), "convert/" + fileNoExt + ext);
+        File newFIle = new File(file.getParent(), fileNoExt + ext);
         String args[] = {CONFIG.magickCommande, file.getAbsolutePath(), newFIle.getAbsolutePath()};
         launchMagick(args);
         return newFIle;

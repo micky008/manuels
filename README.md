@@ -43,7 +43,7 @@ une fois le traitement fini le pdf originale est glisser dans un repertoire qui 
 ## Renommer 
 
 Cet outil permet de renommer des fichiers certe mais la ou ca devient interessant c'est que l´ont peut mettre le fichier dans l'ordre ou on veut.
-C'est pour ca qu'il y a les bouton up/down et pgup/pgdown.
+C'est pour ca qu'il y a les bouton up/down.
 si vous avez une liste du genre:
 - 0.jpg
 - 1.jpg
@@ -61,7 +61,7 @@ le faites de cliquer sur convertir mettra cette liste au format :
 ...  
 etc...  
 
-On peux également supprimer de la la liste les fichiers 
+On peux également supprimer de la liste des fichiers 
 
 Pour démarrer l'outil il faut cliquer sur le bouton "Reset",
 placer les fichiers dans le bon ordre puis cliquez sur "Convertir"
@@ -101,15 +101,17 @@ Cliquez sur Lister. Maintenez "controle" de votre clavier pour sélectionnez plu
 
 Si vous voulez tous convertir cliquer sur "Tout séléctionner" 
 
-De base cela crée un repertoire "resize" dans le repertoire d'origine
+De base cela crée un repertoire "resize" dans le repertoire d'origine avec le résiltat.
 
-si on coche Ecraser les fichiers originaux, cela permet de crée le repertoire intermediaire resize pour mieux le vider et le supprimer derriere.
+si on coche Ecraser les fichiers originaux, le repertoire resize se crée mais se supprime a la fin du traitement.
 
 ## Convertir
 
 Permet de convertir toutes une floppée d'image de l'exention choisie vers du .jpg.
 
 En effet les fichiers de sortie sont forcement en .jpg (bonne qualitée)
+
+les fichiers originaux sont dans un repertoire crée qui se nomme "originals"
 
 ## Rotation
 Comme sont nom l'indique cela permet de faire des rotations sur les fichiers choisis.

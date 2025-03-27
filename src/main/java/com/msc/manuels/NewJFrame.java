@@ -25,8 +25,6 @@ import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
 import com.itextpdf.layout.element.Image;
 import java.awt.event.KeyEvent;
-import java.nio.file.CopyOption;
-import java.nio.file.StandardCopyOption;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
@@ -87,6 +85,7 @@ public class NewJFrame extends javax.swing.JFrame {
         this.jListCropAGarder.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jListCropAExclure.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jListRotate.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        this.jListRenameList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
     }
 
@@ -138,8 +137,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButtonRenameReset = new javax.swing.JButton();
         jLabelRenameNbImage1 = new javax.swing.JLabel();
-        jButtonRenamePgUp = new javax.swing.JButton();
-        jButtonRenamePgDown = new javax.swing.JButton();
         jPanelCrop = new javax.swing.JPanel();
         jButtonConvertCrop = new javax.swing.JButton();
         jTextFieldCrop1 = new javax.swing.JTextField();
@@ -231,7 +228,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 153, 255));
         jLabel6.setText("Infos");
         jLabel6.setToolTipText("");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -325,7 +322,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 153, 255));
         jLabel10.setText("Infos");
         jLabel10.setToolTipText("On peux appyer sur les fleches haut/bas pour monter/decendre un fichier\\n\nOn peux appuyer sur Page up/pagedown pour aller de 10 en 10\\n\nOn peux appyer sur suppr pour supprimer une ligne\n");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -341,22 +338,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelRenameNbImage1.setText("Nombres d'images:");
 
-        jButtonRenamePgUp.setText("Pg Up");
-        jButtonRenamePgUp.setToolTipText("Remonte de 10");
-        jButtonRenamePgUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRenamePgUpActionPerformed(evt);
-            }
-        });
-
-        jButtonRenamePgDown.setText("Pg Down");
-        jButtonRenamePgDown.setToolTipText("Descends de 10");
-        jButtonRenamePgDown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRenamePgDownActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelRenameLayout = new javax.swing.GroupLayout(jPanelRename);
         jPanelRename.setLayout(jPanelRenameLayout);
         jPanelRenameLayout.setHorizontalGroup(
@@ -370,47 +351,42 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRenameLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonRenameReset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonConvertirRename, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(jButtonConvertirRename))
                             .addGroup(jPanelRenameLayout.createSequentialGroup()
-                                .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButtonRenameSuppr, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                    .addComponent(jButtonRenameUp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonRenamePgUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonRenameDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jButtonRenameSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel10)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanelRenameLayout.createSequentialGroup()
-                        .addComponent(jButtonRenamePgDown)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                        .addComponent(jButtonRenameDown, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
                         .addComponent(jLabelRenameNbImage1)
-                        .addGap(82, 82, 82))))
+                        .addGap(82, 82, 82))
+                    .addGroup(jPanelRenameLayout.createSequentialGroup()
+                        .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonRenameReset, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonRenameUp, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelRenameLayout.setVerticalGroup(
             jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRenameLayout.createSequentialGroup()
                 .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                     .addGroup(jPanelRenameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonRenameSuppr)
                             .addComponent(jLabel10))
-                        .addGap(7, 7, 7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonRenameReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addGap(66, 66, 66)
                         .addComponent(jButtonRenameUp)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonRenameDown)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonRenamePgUp)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelRenameNbImage1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonRenamePgDown, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelRenameNbImage1)
+                            .addComponent(jButtonRenameDown))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonConvertirRename)))
                 .addContainerGap())
@@ -438,7 +414,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelCropinfoGeometryURL.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropinfoGeometryURL.setText("Infos");
-        jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelCropinfoGeometryURL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCropinfoGeometryURL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCropinfoGeometryURLMouseClicked(evt);
@@ -447,7 +423,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelCropInfos.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropInfos.setText("Infos");
-        jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelCropInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCropInfos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCropInfosMouseClicked(evt);
@@ -485,7 +461,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelCropInfosList.setForeground(new java.awt.Color(0, 153, 255));
         jLabelCropInfosList.setText("Infos");
-        jLabelCropInfosList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelCropInfosList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCropInfosList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCropInfosListMouseClicked(evt);
@@ -607,7 +583,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2PdfBDBelge.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2PdfBDBelge.setText("Infos");
-        jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelImg2PdfBDBelge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2PdfBDBelge.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2PdfBDBelgeMouseClicked(evt);
@@ -627,7 +603,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2PdfOriginal.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2PdfOriginal.setText("Infos");
-        jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelImg2PdfOriginal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2PdfOriginal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2PdfOriginalMouseClicked(evt);
@@ -636,7 +612,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelImg2Stendard.setForeground(new java.awt.Color(0, 153, 255));
         jLabelImg2Stendard.setText("Infos");
-        jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelImg2Stendard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelImg2Stendard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelImg2StendardMouseClicked(evt);
@@ -726,7 +702,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelResizenfoURL1.setForeground(new java.awt.Color(0, 153, 255));
         jLabelResizenfoURL1.setText("Infos1");
-        jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelResizenfoURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelResizenfoURL1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelResizenfoURL1MouseClicked(evt);
@@ -747,7 +723,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelResizenfoURL2.setForeground(new java.awt.Color(0, 153, 255));
         jLabelResizenfoURL2.setText("Infos2");
-        jLabelResizenfoURL2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelResizenfoURL2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelResizenfoURL2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelResizenfoURL2MouseClicked(evt);
@@ -768,7 +744,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelResizeInfos.setForeground(new java.awt.Color(0, 153, 255));
         jLabelResizeInfos.setText("Infos");
-        jLabelResizeInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelResizeInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelResizeInfos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelResizeInfosMouseClicked(evt);
@@ -866,7 +842,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 153, 255));
         jLabel14.setText("Infos");
         jLabel14.setToolTipText("");
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
@@ -930,7 +906,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelRotateURL1.setForeground(new java.awt.Color(0, 153, 255));
         jLabelRotateURL1.setText("Infos");
         jLabelRotateURL1.setToolTipText("");
-        jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelRotateURL1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelRotateURL1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRotateURL1MouseClicked(evt);
@@ -963,7 +939,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabelRotateInfos.setForeground(new java.awt.Color(0, 153, 255));
         jLabelRotateInfos.setText("Infos");
-        jLabelRotateInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelRotateInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelRotateInfos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRotateInfosMouseClicked(evt);
@@ -990,31 +966,26 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldRotate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jCheckBoxRotate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRotateLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 320, Short.MAX_VALUE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonRotateLister)
+                            .addComponent(jLabelRotateInfos)
+                            .addComponent(jCheckBoxRotateAllSelect)))
                     .addGroup(jPanelRotateLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(59, 59, 59)
                         .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelRotateLayout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonRotateLister)
-                                    .addComponent(jLabelRotateInfos)
-                                    .addComponent(jCheckBoxRotateAllSelect)))
-                            .addGroup(jPanelRotateLayout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonConvertirRotate, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
-                                .addComponent(jLabel1RotateNbImg)
-                                .addGap(78, 78, 78)))))
+                            .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonConvertirRotate, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
+                        .addComponent(jLabel1RotateNbImg)
+                        .addGap(78, 78, 78)))
                 .addContainerGap())
         );
         jPanelRotateLayout.setVerticalGroup(
@@ -1103,16 +1074,6 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonOpenFolderActionPerformed
 
-    private void jButtonRenamePgDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgDownActionPerformed
-        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, -1, 0, 0, KeyEvent.VK_PAGE_DOWN, 'd');
-        jListRenameListKeyPressed(ke);
-    }//GEN-LAST:event_jButtonRenamePgDownActionPerformed
-
-    private void jButtonRenamePgUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenamePgUpActionPerformed
-        java.awt.event.KeyEvent ke = new java.awt.event.KeyEvent(this, -1, 0, 0, KeyEvent.VK_PAGE_UP, 'u');
-        jListRenameListKeyPressed(ke);
-    }//GEN-LAST:event_jButtonRenamePgUpActionPerformed
-
     private void jButtonRenameResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameResetActionPerformed
         File files[] = getFiles(folder, null);
         DefaultListModel<String> model = new DefaultListModel<>();
@@ -1127,7 +1088,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRenameResetActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        JOptionPane.showMessageDialog(this, "Permet de renommer les fichier en 00.jpg 01.jpg etc... dans l'ordre de la liste.\nC'est pour ca qu'on peux bouger les lignes de la liste\n\nOn peux appyer sur les fleches haut/bas pour monter/decendre une ligne\nOn peux appuyer sur Page up/Page down pour aller de 10 en 10\nOn peux appyer sur suppr pour supprimer une ligne");
+        JOptionPane.showMessageDialog(this, "Permet de renommer les fichier en 00.jpg 01.jpg etc... dans l'ordre de la liste.\nC'est pour ca qu'on peux bouger les lignes de la liste\n\nOn peux appyer sur les fleches haut/bas pour monter/decendre une ligne\nOn peux appyer sur suppr pour supprimer une ligne\nMaintenir la touche 'controle' pour sélectionner plusieurs lignes");
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jButtonRenameSupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenameSupprActionPerformed
@@ -1187,54 +1148,49 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         DefaultListModel<String> model = (DefaultListModel<String>) jListRenameList.getModel();
         if (evt.getKeyCode() == KeyEvent.VK_UP) {
-            if (jListRenameList.getSelectedIndex() == 0) {
+            if (jListRenameList.getSelectedIndex() == 0 || jListRenameList.getSelectedIndices().length == 0) {
                 return;
             }
-            String tmp = model.getElementAt(jListRenameList.getSelectedIndex() - 1);
-            model.setElementAt(jListRenameList.getSelectedValue(), jListRenameList.getSelectedIndex() - 1);
-            model.setElementAt(tmp, jListRenameList.getSelectedIndex());
-            if (evt.getID() == -1) {
-                jListRenameList.setSelectedIndex(jListRenameList.getSelectedIndex()-1);
+            int indicies[] = jListRenameList.getSelectedIndices();
+            if (indicies[0] == 0) {
+                evt.consume();
+                return;
             }
+            String firstStr = model.get(indicies[0] - 1);
+            for (int i = 0; i < indicies.length; i++) {
+                String tmp = model.getElementAt(indicies[i]);
+                model.setElementAt(tmp, indicies[i] - 1);
+            }
+            model.setElementAt(firstStr, indicies[indicies.length - 1]);
+            for (int i = 0; i < indicies.length; i++) {
+                indicies[i]--;
+            }
+            jListRenameList.ensureIndexIsVisible(indicies[0]);
+            jListRenameList.setSelectedIndices(indicies);
+            evt.consume();
+
         }
         if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-            if (jListRenameList.getSelectedIndex() == (model.getSize() - 1)) {
+            if (jListRenameList.getSelectedIndex() == (model.getSize() - 1) || jListRenameList.getSelectedIndices().length == 0) {
                 return;
             }
-            String tmp = model.getElementAt(jListRenameList.getSelectedIndex() + 1);
-            model.setElementAt(jListRenameList.getSelectedValue(), jListRenameList.getSelectedIndex() + 1);
-            model.setElementAt(tmp, jListRenameList.getSelectedIndex());
-            if (evt.getID() == -1) {
-                jListRenameList.setSelectedIndex(jListRenameList.getSelectedIndex()+1);
+            int indicies[] = jListRenameList.getSelectedIndices();
+            if (indicies[indicies.length - 1] == model.getSize() - 1) {
+                evt.consume();
+                return;
             }
-        }
-        if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
-            int minPlace = 0;
-            if (jListRenameList.getSelectedIndex() - 14 >= 0) {
-                minPlace = jListRenameList.getSelectedIndex() - 14;
+            String firstStr = model.get(indicies[indicies.length - 1] + 1);
+            for (int i = indicies.length - 1; i > -1; i--) {
+                String tmp = model.getElementAt(indicies[i]);
+                model.setElementAt(tmp, indicies[i] + 1);
             }
-            int tmp = jListRenameList.getSelectedIndex();
-            model.add(minPlace, jListRenameList.getSelectedValue());
-            model.remove(tmp + 1);
-            jListRenameList.ensureIndexIsVisible(minPlace);
-            if (evt.getID() == -1) {
-                jListRenameList.setSelectedIndex(minPlace);
+            model.setElementAt(firstStr, indicies[0]);
+            jListRenameList.ensureIndexIsVisible(indicies[indicies.length - 1]);
+            for (int i = 0; i < indicies.length; i++) {
+                indicies[i]++;
             }
-        }
-        if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
-            int maxPlace = model.getSize();
-            if (jListRenameList.getSelectedIndex() + 14 <= maxPlace) {
-                maxPlace = jListRenameList.getSelectedIndex() + 14;
-            }
-            int tmpSrcInt = jListRenameList.getSelectedIndex();
-            String tmpSrc = model.elementAt(tmpSrcInt);
-            String tmpDest = model.elementAt(maxPlace == model.getSize() ? maxPlace - 1 : maxPlace);
-            model.add(maxPlace, tmpSrc);
-            model.remove(tmpSrcInt);
-            jListRenameList.ensureIndexIsVisible(maxPlace - 1);
-            if (evt.getID() == -1) {
-                jListRenameList.setSelectedIndex(maxPlace - 1);
-            }
+            jListRenameList.setSelectedIndices(indicies);
+            evt.consume();
         }
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if ((model.getSize() - 1) <= 0) {
@@ -1285,12 +1241,14 @@ public class NewJFrame extends javax.swing.JFrame {
             jTextFieldConvertExt.setText("." + jTextFieldConvertExt.getText().trim());
         }
         File files[] = getFiles(folder, jTextFieldConvertExt.getText());
-        new File(folder, "convert").mkdirs();
+        File originalFolder = new File(folder, "originals");
+        originalFolder.mkdirs();
         int i = 0;
         for (File file : files) {
             try {
                 i++;
                 magick.launchConvertInm(file, ".jpg");
+                FileUtils.moveFileToDirectory(file, originalFolder, true);
             } catch (Exception ex) {
                 Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1619,8 +1577,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCropToInclude;
     private javax.swing.JButton jButtonOpenFolder;
     private javax.swing.JButton jButtonRenameDown;
-    private javax.swing.JButton jButtonRenamePgDown;
-    private javax.swing.JButton jButtonRenamePgUp;
     private javax.swing.JButton jButtonRenameReset;
     private javax.swing.JButton jButtonRenameSuppr;
     private javax.swing.JButton jButtonRenameUp;
