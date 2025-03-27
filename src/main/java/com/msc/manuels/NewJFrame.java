@@ -1478,7 +1478,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRotateListerActionPerformed
 
     private void jButtonResizeLister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResizeLister1ActionPerformed
-        File files[] = getFiles(folder, null);
+        File files[] = getFiles(folder, ".jpg");
         DefaultListModel<String> model = new DefaultListModel<>();
         for (File file : files) {
             model.addElement(file.getName());
