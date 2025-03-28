@@ -42,7 +42,7 @@ une fois le traitement fini le pdf originale est glisser dans un repertoire qui 
 
 ## Renommer 
 
-Cet outil permet de renommer des fichiers certe mais la ou ca devient interessant c'est que l´ont peut mettre le fichier dans l'ordre ou on veut.
+Cet outil permet de renommer des fichiers, certes, mais la ou ca devient interessant c'est que l´ont peut mettre le fichier dans l'ordre ou on veut.
 C'est pour ca qu'il y a les bouton up/down.
 si vous avez une liste du genre:
 - 0.jpg
@@ -61,7 +61,7 @@ le faites de cliquer sur convertir mettra cette liste au format :
 ...  
 etc...  
 
-On peux également supprimer de la liste des fichiers 
+On peux également supprimer des fichiers de la liste 
 
 Pour démarrer l'outil il faut cliquer sur le bouton "Reset",
 placer les fichiers dans le bon ordre puis cliquez sur "Convertir"
@@ -112,6 +112,13 @@ Permet de convertir toutes une floppée d'image de l'exention choisie vers du .j
 En effet les fichiers de sortie sont forcement en .jpg (bonne qualitée)
 
 les fichiers originaux sont dans un repertoire crée qui se nomme "originals"
+
+On peux choisir les fichiers a inclure ou exclure de la convertion car on peut directement mettre les images en couleur de gris.
+Cela reduit le poids, entre autre, puis c'est plus facile pour appliquer des filtres lighter/darker.
+
+On exclue par exemple une image en couleur, et on passe toutes les autres en gris.
+et on clique sur "Lister" pour ensuite convertir en couleur celles qui restent.
+
 
 ## Rotation
 Comme sont nom l'indique cela permet de faire des rotations sur les fichiers choisis.
