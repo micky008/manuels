@@ -86,6 +86,8 @@ public class NewJFrame extends javax.swing.JFrame {
         this.jListCropAExclure.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jListRotate.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jListRenameList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        this.jListConvertAGarder1.setModel(new DefaultListModel<String>());
+        this.jListConvertAExclure1.setModel(new DefaultListModel<String>());
 
     }
 
@@ -190,6 +192,16 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButtonConvertireConvert = new javax.swing.JButton();
         jLabelConvertNbImg = new javax.swing.JLabel();
+        jCheckBoxConvertgrayscale = new javax.swing.JCheckBox();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jListConvertAExclure1 = new javax.swing.JList<>();
+        jButtonConcertToExclude1 = new javax.swing.JButton();
+        jButtonConvertToInclude1 = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jListConvertAGarder1 = new javax.swing.JList<>();
+        jButtonConvertLister1 = new javax.swing.JButton();
         jPanelRotate = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jTextFieldRotate = new javax.swing.JTextField();
@@ -252,7 +264,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(81, 81, 81))
                     .addGroup(jPanelPdf2ImagLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 496, Short.MAX_VALUE)
                         .addComponent(jButtonConvertPdf2Img)))
                 .addContainerGap())
             .addGroup(jPanelPdf2ImagLayout.createSequentialGroup()
@@ -345,29 +357,33 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(jPanelRenameLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRenameLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRenameLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonConvertirRename))
                             .addGroup(jPanelRenameLayout.createSequentialGroup()
-                                .addComponent(jButtonRenameSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanelRenameLayout.createSequentialGroup()
-                        .addComponent(jButtonRenameDown, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
-                        .addComponent(jLabelRenameNbImage1)
-                        .addGap(82, 82, 82))
-                    .addGroup(jPanelRenameLayout.createSequentialGroup()
-                        .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonRenameReset, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonRenameUp, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRenameLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jButtonConvertirRename))
+                                    .addGroup(jPanelRenameLayout.createSequentialGroup()
+                                        .addComponent(jButtonRenameSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel10)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
+                            .addGroup(jPanelRenameLayout.createSequentialGroup()
+                                .addComponent(jButtonRenameDown, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                                .addComponent(jLabelRenameNbImage1)
+                                .addGap(82, 82, 82))
+                            .addGroup(jPanelRenameLayout.createSequentialGroup()
+                                .addComponent(jButtonRenameUp, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRenameLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonRenameReset, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanelRenameLayout.setVerticalGroup(
             jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,9 +395,9 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonRenameSuppr)
                             .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(74, 74, 74)
                         .addComponent(jButtonRenameReset)
-                        .addGap(66, 66, 66)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonRenameUp)
                         .addGap(18, 18, 18)
                         .addGroup(jPanelRenameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -504,7 +520,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCropLayout.createSequentialGroup()
-                        .addGap(0, 113, Short.MAX_VALUE)
+                        .addGap(0, 192, Short.MAX_VALUE)
                         .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonConvertCrop, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
@@ -518,7 +534,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanelCropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCropLayout.createSequentialGroup()
-                    .addContainerGap(693, Short.MAX_VALUE)
+                    .addContainerGap(745, Short.MAX_VALUE)
                     .addComponent(jLabelNbImageCrop, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(8, 8, 8)))
         );
@@ -661,7 +677,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jLabelImg2PdfOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelImg2PdfBDBelge, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelImg2Stendard, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(297, Short.MAX_VALUE))))
+                        .addContainerGap(364, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelimg2PdfLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelImg2PDFNbImg1)
@@ -850,6 +866,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jButtonConvertireConvert.setText("Convertir");
+        jButtonConvertireConvert.setEnabled(false);
         jButtonConvertireConvert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConvertireConvertActionPerformed(evt);
@@ -857,6 +874,37 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jLabelConvertNbImg.setText("Nombres d'images:");
+
+        jCheckBoxConvertgrayscale.setText("GrayScale ?");
+
+        jLabel12.setText("A garder");
+
+        jLabel15.setText("A exclure");
+
+        jScrollPane6.setViewportView(jListConvertAExclure1);
+
+        jButtonConcertToExclude1.setText(">");
+        jButtonConcertToExclude1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConcertToExclude1ActionPerformed(evt);
+            }
+        });
+
+        jButtonConvertToInclude1.setText("<");
+        jButtonConvertToInclude1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertToInclude1ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane7.setViewportView(jListConvertAGarder1);
+
+        jButtonConvertLister1.setText("Lister");
+        jButtonConvertLister1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvertLister1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelConvertLayout = new javax.swing.GroupLayout(jPanelConvert);
         jPanelConvert.setLayout(jPanelConvertLayout);
@@ -871,9 +919,27 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(jLabel14)
-                        .addContainerGap(385, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelConvertLayout.createSequentialGroup()
+                        .addComponent(jCheckBoxConvertgrayscale)
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelConvertLayout.createSequentialGroup()
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonConcertToExclude1)
+                                    .addComponent(jButtonConvertToInclude1))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelConvertLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel12)
+                                .addGap(191, 191, 191)
+                                .addComponent(jLabel15)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConvertLister1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
                                 .addComponent(jButtonConvertireConvert)
@@ -890,10 +956,32 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(jTextFieldConvertExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                .addComponent(jLabelConvertNbImg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonConvertireConvert)
+                .addGap(29, 29, 29)
+                .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelConvertLayout.createSequentialGroup()
+                        .addComponent(jCheckBoxConvertgrayscale)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelConvertNbImg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonConvertireConvert))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConvertLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonConvertLister1)
+                        .addGap(132, 132, 132))
+                    .addGroup(jPanelConvertLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jButtonConcertToExclude1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConvertToInclude1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelConvertLayout.createSequentialGroup()
+                        .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addGroup(jPanelConvertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -980,7 +1068,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelRotateURL1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addGroup(jPanelRotateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonConvertirRotate, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRotateLayout.createSequentialGroup()
@@ -1237,23 +1325,28 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelResizenfoURL1MouseClicked
 
     private void jButtonConvertireConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertireConvertActionPerformed
-        if (!jTextFieldConvertExt.getText().startsWith(".")) {
-            jTextFieldConvertExt.setText("." + jTextFieldConvertExt.getText().trim());
+        String ext = jTextFieldConvertExt.getText().trim().toLowerCase();
+        if (!ext.startsWith(".")) {
+            jTextFieldConvertExt.setText("." + ext);
         }
-        File files[] = getFiles(folder, jTextFieldConvertExt.getText());
-        File originalFolder = new File(folder, "originals");
-        originalFolder.mkdirs();
+        DefaultListModel<String> model = (DefaultListModel<String>) jListConvertAGarder1.getModel();
+        Iterator<String> it = model.elements().asIterator();
         int i = 0;
-        for (File file : files) {
+        while (it.hasNext()) {
+            File file = new File(folder, it.next());
+            File originalFolder = new File(folder, "originals");
+            originalFolder.mkdirs();
             try {
                 i++;
-                magick.launchConvertInm(file, ".jpg");
-                FileUtils.moveFileToDirectory(file, originalFolder, true);
+                magick.launchConvertInm(file, ".jpg", jCheckBoxConvertgrayscale.isSelected());
+                if (!ext.equals(".jpg")) {
+                    FileUtils.moveFileToDirectory(file, originalFolder, true);
+                }
             } catch (Exception ex) {
                 Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        jLabelConvertNbImg.setText("Nombres d'images: " + i + "/" + files.length);
+        jLabelConvertNbImg.setText("Nombres d'images: " + i + "/" + model.size());
     }//GEN-LAST:event_jButtonConvertireConvertActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
@@ -1506,6 +1599,45 @@ public class NewJFrame extends javax.swing.JFrame {
         jListResize.setEnabled(!jCheckBoxResizeAllSelect.isSelected());
     }//GEN-LAST:event_jCheckBoxResizeAllSelectActionPerformed
 
+    private void jButtonConcertToExclude1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcertToExclude1ActionPerformed
+        DefaultListModel<String> modelGarde = (DefaultListModel<String>) jListConvertAGarder1.getModel();
+        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListConvertAExclure1.getModel();
+        int indices[] = jListConvertAGarder1.getSelectedIndices();
+        for (int i = 0; i < indices.length; i++) {
+            String value = modelGarde.get(indices[i]);
+            modelExclude.addElement(value);
+        }
+        for (int i = (indices.length - 1); i > -1; i--) {
+            modelGarde.removeElementAt(indices[i]);
+        }
+    }//GEN-LAST:event_jButtonConcertToExclude1ActionPerformed
+
+    private void jButtonConvertToInclude1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertToInclude1ActionPerformed
+        DefaultListModel<String> modelGarde = (DefaultListModel<String>) jListConvertAGarder1.getModel();
+        DefaultListModel<String> modelExclude = (DefaultListModel<String>) jListConvertAExclure1.getModel();
+        int indices[] = jListConvertAExclure1.getSelectedIndices();
+        for (int i = 0; i < indices.length; i++) {
+            String value = modelExclude.get(indices[i]);
+            modelGarde.addElement(value);
+        }
+        for (int i = (indices.length - 1); i > -1; i--) {
+            modelExclude.removeElementAt(indices[i]);
+        }
+    }//GEN-LAST:event_jButtonConvertToInclude1ActionPerformed
+
+    private void jButtonConvertLister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertLister1ActionPerformed
+        File files[] = getFiles(folder, jTextFieldConvertExt.getText());
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (File file : files) {
+            model.addElement(file.getName());
+        }
+        jListConvertAGarder1.setModel(model);
+        jListConvertAExclure1.setModel(new DefaultListModel<>());
+        if (model.size() > 0) {
+            jButtonConvertireConvert.setEnabled(true);
+        }
+    }//GEN-LAST:event_jButtonConvertLister1ActionPerformed
+
     private boolean resetList = false;
 
     private void openURL(String url) {
@@ -1565,9 +1697,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupImg2Pdf;
+    private javax.swing.JButton jButtonConcertToExclude1;
     private javax.swing.JButton jButtonConvertCrop;
     private javax.swing.JButton jButtonConvertImg2Pdf;
+    private javax.swing.JButton jButtonConvertLister1;
     private javax.swing.JButton jButtonConvertPdf2Img;
+    private javax.swing.JButton jButtonConvertToInclude1;
     private javax.swing.JButton jButtonConvertirRename;
     private javax.swing.JButton jButtonConvertirResize;
     private javax.swing.JButton jButtonConvertirRotate;
@@ -1582,6 +1717,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRenameUp;
     private javax.swing.JButton jButtonResizeLister1;
     private javax.swing.JButton jButtonRotateLister;
+    private javax.swing.JCheckBox jCheckBoxConvertgrayscale;
     private javax.swing.JCheckBox jCheckBoxResize;
     private javax.swing.JCheckBox jCheckBoxResizeAllSelect;
     private javax.swing.JCheckBox jCheckBoxRotate;
@@ -1593,8 +1729,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel1ConvertNbImage;
@@ -1625,6 +1763,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelResizenfoURL2;
     private javax.swing.JLabel jLabelRotateInfos;
     private javax.swing.JLabel jLabelRotateURL1;
+    private javax.swing.JList<String> jListConvertAExclure1;
+    private javax.swing.JList<String> jListConvertAGarder1;
     private javax.swing.JList<String> jListCropAExclure;
     private javax.swing.JList<String> jListCropAGarder;
     private javax.swing.JList<String> jListRenameList;
@@ -1645,6 +1785,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextFieldConvertExt;
     private javax.swing.JTextField jTextFieldCrop1;

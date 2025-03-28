@@ -9,15 +9,9 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 /**
@@ -38,7 +32,7 @@ public class Magick {
         String fileNameNoExt = pdf.getName().substring(0, pos);
         File result = new File(pdf.getParentFile(), fileNameNoExt + "-%d.jpg");
         String args[] = {CONFIG.magickCommande, "-density", density, pdf.getAbsolutePath(), result.getAbsolutePath()};
-        launchMagick(args);      
+        launchMagick(args);
         return result;
     }
 
@@ -94,12 +88,25 @@ public class Magick {
         return filename;
     }
 
-    public File launchConvertInm(File file, String ext) throws Exception {
+    public File launchConvertInm(File file, String ext, boolean toGrayScale) throws Exception {
         int pos = file.getName().lastIndexOf('.');
         String fileNoExt = file.getName().substring(0, pos);
 
         File newFIle = new File(file.getParent(), fileNoExt + ext);
-        String args[] = {CONFIG.magickCommande, file.getAbsolutePath(), newFIle.getAbsolutePath()};
+        String args[] = null;
+        if (!toGrayScale) {
+            args = new String[3];
+            args[2] = newFIle.getAbsolutePath();
+        } else {
+            args = new String[5];
+            args[2] = "-colorspace"; 
+            args[3] = "gray";
+            args[4] = newFIle.getAbsolutePath();
+        }
+
+        args[0] = CONFIG.magickCommande;
+        args[1] = file.getAbsolutePath();
+
         launchMagick(args);
         return newFIle;
     }
@@ -125,8 +132,10 @@ public class Magick {
                 System.out.println(line);
             }
             p.waitFor();
+
         } catch (Exception ex) {
-            Logger.getLogger(Magick.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Magick.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
