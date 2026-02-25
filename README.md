@@ -90,8 +90,8 @@ voici la syntaxe a utiliser (format imageMagick)  : WxH-X-Y
 W = longeure de l'image (Width) 
 H = la hauteur (Height)
 x = juste x (pour 1280x720 par exemple)
--X la ou commence le "1er point"pour le crop en X
--Y la ou commence le point mais en Y
+-X (ou +X) la ou commence le "1er point" pour le crop en X
+-Y (ou +Y) la ou commence le point mais en Y
 ```
 
 il faut se representer un rectengle dans la tete. 
