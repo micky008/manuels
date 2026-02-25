@@ -69,9 +69,9 @@ Si vous vous trompez refaites un "Reset"
 
 ## Crop
 
-le crop c'est rognage (en francais) ca permet de couper une image qui contient 2 feuilles de manuel pour en faire 1 image distinct.
+le crop c'est rognage (en francais) ca permet de couper une image qui contient 2 feuilles de manuel pour en faire 1 image distincte.
 
-si vous avez par exemple 02-03.jpg cela donnera:
+si vous avez par exemple 02-03.jpg (une image qui contient 2 page de manuels) cela donnera:
 - 02-03-1.jpg
 - 02-03-2.jpg
 
@@ -83,6 +83,23 @@ Puis sur convertir.
 
 Cela créera un repertoire a la racine de celui choisi au tout debut nommer "originals" qui contiendra les images qui sont a rogner, autrement dit les images d'origines vont dans le repertoire originals.  
 Les exclus ne bougent pas, et les nouvelles images sont dans le repertoire d'origine.
+
+
+voici la syntaxe a utiliser (format imageMagick)  : WxH-X-Y
+```
+W = longeure de l'image (Width) 
+H = la hauteur (Height)
+x = juste x (pour 1280x720 par exemple)
+-X la ou commence le "1er point"pour le crop en X
+-Y la ou commence le point mais en Y
+```
+
+il faut se representer un rectengle dans la tete. 
+
+De base c'est en Auto. voici les formules utilisées :
+- pour la 1ere page : (W/2)xH-0-0
+- pour la page 2    : (W/2)xH+(W/2)-0
+
 
 ## Img 2 PDF
 
