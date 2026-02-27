@@ -22,6 +22,8 @@ Il faut lancer le programme via la ligne de comamnde : java -jar manuels-X.X.X.j
 X = numero de version
 exemple: 1.2.0 => manuels-1.2.0.jar
 
+**et remplir le fichier config.json**
+
 ## Démmarage
 
 Pour commencer a utiliser l'outil il faut cliquer sur le bouton "Ouvrir" en haut a droite puis renseigner le répértoire de travail.
@@ -29,8 +31,10 @@ Pour commencer a utiliser l'outil il faut cliquer sur le bouton "Ouvrir" en haut
 
 Attention, cet outil traite uniquement le repertoire choisi. il ne fait pas de récursivité.
 
-De plus une fois une action choisi l'outil se figera jusqu'a la fin du traitement. c'est la ou le texte "nombre d'images" changera. une fois le label changer c'est que le traitement est fini. **Tous les traitement sont longs**
+De plus une fois une action choisi l'outil se **figera** jusqu'a la fin du traitement.   
+Le traitement est fini une fois que le texte "nombre d'images" change.
 
+**Tous les traitement sont longs**
 
 ## Convertir un pdf en image
 
