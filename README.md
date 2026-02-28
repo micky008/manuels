@@ -120,6 +120,8 @@ la taille idéale c'est le A5.
 si les images sont vraiment dans une taille impossible a caler dans les formats ci-dessus, alors on peux laisser "original".
 et la 3eme option c'est la taille forcée.
 
+Si dans le nom de l'image il y a le mot "paysage" (exemple: 00-paysage.jpg) la page seul serra en paysage A5 (ou le format choisi) et les autre en mode protrait.
+
 ## Resize
 
 Permet de séléctionner les images que l'on veux redimentionner. en cliquant sur Infos1, on arrive sur la page de comment on peux ecrire un "size"
