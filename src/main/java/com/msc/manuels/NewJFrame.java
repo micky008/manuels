@@ -8,6 +8,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfObject;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfResources;
+import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -1404,22 +1412,27 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButtonConvertImg2PdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertImg2PdfActionPerformed
         File files[] = getFiles(folder, ".jpg");
         PageSize pg = null;
+        PageSize pgrotate = null;
         try {
             if (jRadioButtonOriginal.isSelected()) {
                 Image image = new Image(ImageDataFactory.create(files[0].getAbsolutePath()));
                 pg = new PageSize(image.getImageWidth() / 4, image.getImageHeight() / 4);
+                pgrotate = new PageSize(image.getImageHeight() / 4, image.getImageWidth() / 4);
             } else if (jRadioButtonStendard.isSelected()) {
                 String resStr = jComboBoxImg2PdfPageSize.getSelectedItem().toString();
                 Field f = PageSize.class.getField(resStr);
                 pg = (PageSize) f.get(null);
+                pgrotate = pg.rotate();
             } else {
                 pg = new PageSize(Float.parseFloat(jFormattedTextFieldImg2PdfWidth.getText()), Float.parseFloat(jFormattedTextFieldImg2PdfHeight.getText()));
+                pgrotate = pg.rotate();
             }
-            magick.launchImg2Pdf(files, pg);
+            magick.launchImg2Pdf(files, pg, pgrotate);
             jLabelImg2PDFNbImg1.setText("Nombres d'images: " + files.length);
         } catch (Exception ex) {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_jButtonConvertImg2PdfActionPerformed
 
     private void jLabelCropInfosListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCropInfosListMouseClicked
@@ -1525,14 +1538,33 @@ public class NewJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Pas de pdf trouver dans le repertoire choisi", "Erreur", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        File pdf = pdfs[0];
+        File pdfFile = pdfs[0];
 
         try {
-            magick.launchPdf2Img(pdf, jFormattedTextFieldPdf2Img.getText());
+            //magick.launchPdf2Img(pdf, jFormattedTextFieldPdf2Img.getText());
+            PdfReader reader = new PdfReader(pdfFile);
+            PdfDocument pdf = new PdfDocument(reader);
+            int imageIndex = 0;
+
+            for (int i = 1; i <= pdf.getNumberOfPages(); i++) {
+                PdfPage page = pdf.getPage(i);
+                PdfResources resources = page.getResources();
+
+                for (PdfName name : resources.getResourceNames(PdfName.XObject)) {
+                    PdfObject obj = resources.getResource(PdfName.XObject).get(name);
+                    if (obj instanceof PdfStream) {
+                        PdfStream stream = (PdfStream) obj;
+                        PdfImageXObject imgObj = new PdfImageXObject(stream);
+                        ImageIO.write(imgObj.getBufferedImage(), "JPG", new File(folder, "image_" + imageIndex++ + ".jpg"));
+                    }
+                }
+            }
+
+            pdf.close();
         } catch (Exception ex) {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        moveFileToFolder(pdf, "originals");
+        moveFileToFolder(pdfFile, "originals");
         File jpgs[] = getFiles(folder, ".jpg");
         jLabelPdf2imgNbImg.setText("Nombres d'images: " + jpgs.length);
     }//GEN-LAST:event_jButtonConvertPdf2ImgActionPerformed

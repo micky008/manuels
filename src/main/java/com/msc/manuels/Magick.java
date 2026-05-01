@@ -37,7 +37,7 @@ public class Magick {
     }
 
     //    A ne pas delete
-    public File launchImg2Pdf(File[] files, PageSize pg) throws Exception {
+    public File launchImg2Pdf(File[] files, PageSize pg, PageSize pgrotate) throws Exception {
         int pos = files[0].getName().lastIndexOf('.');
         String destStr = files[0].getParentFile().getAbsolutePath() + "/" + files[0].getName().substring(0, pos) + ".pdf";
         File dest = new File(destStr);
@@ -50,10 +50,11 @@ public class Magick {
 
         for (int i = 0; i < files.length; i++) {
             image = new Image(ImageDataFactory.create(files[i].getAbsolutePath()));
-            image = image.scaleToFit(pg.getWidth(), pg.getHeight());
             if (files[i].getName().contains("paysage")) {
-                pdfDoc.addNewPage(pg.rotate());
+                image = image.scaleToFit(pg.getHeight(), pg.getWidth());
+                pdfDoc.addNewPage(pgrotate);
             } else {
+                image = image.scaleToFit(pg.getWidth(), pg.getHeight());
                 pdfDoc.addNewPage(pg);
             }
             image.setFixedPosition(i + 1, 0, 0);
@@ -99,7 +100,7 @@ public class Magick {
             args[2] = newFIle.getAbsolutePath();
         } else {
             args = new String[5];
-            args[2] = "-colorspace"; 
+            args[2] = "-colorspace";
             args[3] = "gray";
             args[4] = newFIle.getAbsolutePath();
         }
