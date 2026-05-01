@@ -4,7 +4,7 @@ Cet UI permet de faire 6 actions distinct.
 - Convertir un PDF en une serie d'image
 - De renommer en lot des fichiers et de les replacer dans le bon ordre
 - De crop une image
-- De convertir une liste de fichier en pdf sous plusieur format
+- De convertir une liste d'image en pdf
 - De redimantionner des images
 - Convetir en une autre extention par lot
 - Et de faire de rotation par lot.
@@ -22,6 +22,8 @@ Il faut lancer le programme via la ligne de comamnde : java -jar manuels-X.X.X.j
 X = numero de version
 exemple: 1.2.0 => manuels-1.2.0.jar
 
+**et remplir le fichier config.json**
+
 ## Démmarage
 
 Pour commencer a utiliser l'outil il faut cliquer sur le bouton "Ouvrir" en haut a droite puis renseigner le répértoire de travail.
@@ -29,8 +31,10 @@ Pour commencer a utiliser l'outil il faut cliquer sur le bouton "Ouvrir" en haut
 
 Attention, cet outil traite uniquement le repertoire choisi. il ne fait pas de récursivité.
 
-De plus une fois une action choisi l'outil se figera jusqu'a la fin du traitement. c'est la ou le texte "nombre d'images" changera. une fois le label changer c'est que le traitement est fini. **Tous les traitement sont longs**
+De plus une fois une action choisi l'outil se **figera** jusqu'a la fin du traitement.   
+Le traitement est fini une fois que le texte "nombre d'images" change.
 
+**Tous les traitement sont longs**
 
 ## Convertir un pdf en image
 
@@ -90,8 +94,8 @@ voici la syntaxe a utiliser (format imageMagick)  : WxH-X-Y
 W = longeure de l'image (Width) 
 H = la hauteur (Height)
 x = juste x (pour 1280x720 par exemple)
--X la ou commence le "1er point"pour le crop en X
--Y la ou commence le point mais en Y
+-X (ou +X) la ou commence le "1er point" pour le crop en X
+-Y (ou +Y) la ou commence le point mais en Y
 ```
 
 il faut se representer un rectengle dans la tete. 
@@ -109,6 +113,15 @@ Cela crée un PDF au meme endroit que le repertoire de depart.
 qui a pour nom, le meme nom que la 1ere image.
 exemple: 00.pdf
 
+voici les tailles de bases:
+"A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "DEFAULT", "EXECUTIVE", "LEDGER", "LEGAL", "LETTER", "TABLOID"
+
+la taille idéale c'est le A5. 
+si les images sont vraiment dans une taille impossible a caler dans les formats ci-dessus, alors on peux laisser "original".
+et la 3eme option c'est la taille forcée.
+
+Si dans le nom de l'image il y a le mot "paysage" (exemple: 00-paysage.jpg) la page seul serra en paysage A5 (ou le format choisi) et les autre en mode protrait.
+
 ## Resize
 
 Permet de séléctionner les images que l'on veux redimentionner. en cliquant sur Infos1, on arrive sur la page de comment on peux ecrire un "size"
@@ -122,7 +135,7 @@ De base cela crée un repertoire "resize" dans le repertoire d'origine avec le r
 
 si on coche Ecraser les fichiers originaux, le repertoire resize se crée mais se supprime a la fin du traitement.
 
-## Convertir
+## Convertir img to jpg
 
 Permet de convertir toutes une floppée d'image de l'exention choisie vers du .jpg.
 
